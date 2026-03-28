@@ -1,0 +1,228 @@
+[
+  {
+    "servicios": [
+      {
+        "nombre": "Manos Tradicionales",
+        "claves": [
+          "manicura tradicional",
+          "uñas normales",
+          "esmaltado clásico"
+        ],
+        "duracion": 45,
+        "Descripción": "Limpieza profunda, exfoliación y esmaltado tradicional. Va incluida una uña con sticker; si desea un diseño a mano el precio varía entre 500 a 2k.",
+        "precio": 20000
+      },
+      {
+        "nombre": "Pies Tradicionales",
+        "claves": [
+          "pedicura tradicional",
+          "pies básicos",
+          "esmaltado tradicional pies"
+        ],
+        "duracion": 60,
+        "Descripción": "Limpieza profunda, exfoliación, máquina masajeadora térmica con duración de 5 minutos y esmaltado tradicional. Va incluida una uña con sticker; si desea un diseño a mano el precio varía entre 500 a 2k.",
+        "precio": 23000
+      },
+      {
+        "nombre": "Limpieza",
+        "claves": [
+          "limpieza de uñas",
+          "solo limpieza",
+          "exfoliación de manos"
+        ],
+        "duracion": 30,
+        "Descripción": "Limpieza profunda y exfoliación.",
+        "precio": 15000
+      },
+      {
+        "nombre": "Cambio de Esmalte",
+        "claves": [
+          "cambiar color",
+          "pintar uñas",
+          "esmaltado solo"
+        ],
+        "duracion": 20,
+        "Descripción": "Cambio de esmalte tradicional.",
+        "precio": 10000
+      },
+      {
+        "nombre": "Manos Semipermanente - Mujeres",
+        "claves": [
+          "semipermanente manos",
+          "esmalte gel",
+          "manicura gelish",
+          "semi mujeres"
+        ],
+        "duracion": 60,
+        "Descripción": "Limpieza profunda en seco con exfoliación y esmaltado en gel. Va incluida una uña decorada o un diseño sencillo, y adicional se incluye el retiro del diseño que se realice aquí en el spa.",
+        "precio": 48000
+      },
+      {
+        "nombre": "Manos semipermanente con base rubber",
+        "claves": [
+          "base rubber",
+          "nivelación uña",
+          "refuerzo semipermanente"
+        ],
+        "duracion": 80,
+        "Descripción": "La base rubber es usada para nivelar la uña y aportar dureza a las uñas frágiles. Se realiza mediante una limpieza profunda en seco con exfoliación y esmaltado en gel. Va incluida una uña decorada o un diseño sencillo.",
+        "precio": 58000
+      },
+      {
+        "nombre": "Pies semipermanente - Mujeres",
+        "claves": [
+          "pedicura semipermanente",
+          "pies semi",
+          "pies semi mujeres",
+          "pedicura gel"
+        ],
+        "duracion": 60,
+        "Descripción": "Limpieza profunda en seco con exfoliación y esmaltado en gel. Va incluida una uña decorada o un diseño sencillo, y adicional se incluye el retiro del diseño que se realice aquí.",
+        "precio": 42000
+      },
+      {
+        "nombre": "Manos semipermanente - Hombres",
+        "claves": [
+          "manicura hombre",
+          "semipermanente masculino",
+          "uñas caballero"
+        ],
+        "duracion": 50,
+        "Descripción": "Limpieza profunda en seco con exfoliación y esmaltado en gel. Adicional se incluye el retiro si se lo realizaron aquí en Gold Nails Spa.",
+        "precio": 40000
+      },
+      {
+        "nombre": "Pies semipermanente - Hombres",
+        "claves": [
+          "pedicura hombre",
+          "pies caballero",
+          "semipermanente pies hombre"
+        ],
+        "duracion": 60,
+        "Descripción": "Limpieza profunda en seco con exfoliación y esmaltado en gel, máquina masajeadora térmica con duración de 5 minutos. Adicional se incluye el retiro si se lo realizaron en Gold Nails Spa.",
+        "precio": 43000
+      },
+      {
+        "nombre": "Baño en acrílico",
+        "claves": [
+          "baño acrílico",
+          "recubrimiento acrílico",
+          "acrílico sobre uña natural"
+        ],
+        "duracion": 90,
+        "Descripción": "Limpieza en seco, recubrimiento de uña natural con acrílico y esmaltado semipermanente.",
+        "precio": 85000
+      },
+      {
+        "nombre": "Retoque de baño en acrílicas",
+        "claves": [
+          "mantenimiento acrílico",
+          "relleno acrílico",
+          "retoque baño"
+        ],
+        "duracion": 90,
+        "Descripción": "Retiro del esmaltado semipermanente, limpieza profunda en seco y retoque del baño con esmaltado semipermanente.",
+        "precio": 70000
+      },
+      {
+        "nombre": "Uñas acrílicas con tip",
+        "claves": [
+          "extensiones acrílicas",
+          "uñas con tip",
+          "acrílicas largas"
+        ],
+        "duracion": 120,
+        "Descripción": "Limpieza en seco, extensión de uña con tip y baño en acrílico con esmaltado semipermanente.",
+        "precio": 90000
+      },
+      {
+        "nombre": "Acrílicas esculpidas con molde",
+        "claves": [
+          "uñas esculpidas",
+          "acrílico con molde",
+          "técnica esculpida"
+        ],
+        "duracion": 150,
+        "Descripción": "Limpieza en seco, uñas acrílicas esculpidas hasta largor número 3 con esmaltado semipermanente.",
+        "precio": 125000
+      },
+      {
+        "nombre": "Retoque de acrílicas esculpidas",
+        "claves": [
+          "mantenimiento esculpidas",
+          "relleno esculpido",
+          "retoque uñas largas"
+        ],
+        "duracion": 120,
+        "Descripción": "Retiro del esmaltado semipermanente, limpieza profunda en seco y retoque del acrílico con esmaltado semipermanente.",
+        "precio": 85000
+      },
+      {
+        "nombre": "Técnica Dipping",
+        "claves": [
+          "dipping nails",
+          "uñas en polvo",
+          "inmersión acrílica"
+        ],
+        "duracion": 60,
+        "Descripción": "Limpieza en seco. La técnica de dipping implica aplicar capas de polvo acrílico en tus uñas para que se vuelvan más fuertes y duren mucho tiempo, culminando con esmaltado semipermanente.",
+        "precio": 60000
+      },
+      {
+        "nombre": "Soft gel - Press On",
+        "claves": [
+          "press on",
+          "uñas soft gel",
+          "extensiones rápidas"
+        ],
+        "duracion": 90,
+        "Descripción": "Las press on son un sistema moderno para alargar tus uñas de forma más rápida y con un acabado más natural. Se realiza la limpieza en seco, exfoliación y se culmina con esmaltado semipermanente.",
+        "precio": 85000
+      },
+      {
+        "nombre": "Retoque Press On",
+        "claves": [
+          "mantenimiento press on",
+          "retoque soft gel",
+          "nivelación press on"
+        ],
+        "duracion": 70,
+        "Descripción": "Se retira el esmaltado semipermanente, se hace limpieza en seco, se nivela el área de crecimiento con base rubber y se culmina con esmaltado semipermanente.",
+        "precio": 70000
+      },
+      {
+        "nombre": "Punto de acrílico",
+        "claves": [
+          "reparación de uña",
+          "arreglo de fisura",
+          "punto de refuerzo"
+        ],
+        "duracion": 15,
+        "Descripción": "Si tienes alguna fisura en la uña y no quieres bajar el largor, el punto de acrílico servirá para cubrir esa fisura.",
+        "precio": 2000
+      },
+      {
+        "nombre": "Retiro de semipermanente",
+        "claves": [
+          "quitar semipermanente",
+          "remover gel",
+          "retiro esmalte semi"
+        ],
+        "duracion": 30,
+        "Descripción": "Si traes un diseño elaborado en otro lugar se cobra el retiro. Se realiza mediante un proceso especializado para no maltratar la placa ungueal.",
+        "precio": 12000
+      },
+      {
+        "nombre": "Retiro de acrílico u otro sistema",
+        "claves": [
+          "quitar acrílicas",
+          "remover extensiones",
+          "retiro sistema"
+        ],
+        "duracion": 45,
+        "Descripción": "Se hace mediante un proceso especializado para no maltratar la placa ungueal, utilizando productos de calidad que cuidan tus uñas.",
+        "precio": 20000
+      }
+    ]
+  }
+]

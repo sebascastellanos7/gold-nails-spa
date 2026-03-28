@@ -17,9 +17,7 @@
     <div class="nav-container">
       <a href="#hero" class="nav-logo" aria-label="Gold Nails Spa Home">
         <span class="logo-icon">
-          <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <path d="M14 2L16.8 9.2L24.5 9.2L18.3 13.8L20.6 21L14 16.8L7.4 21L9.7 13.8L3.5 9.2L11.2 9.2L14 2Z" fill="#D4AF37"/>
-          </svg>
+          <img src="logo.png" alt="Gold Nails Spa logo" class="logo-img" />
         </span>
         <span class="logo-text">Gold Nails <em>Spa</em></span>
       </a>
@@ -47,17 +45,17 @@
 
   <!-- HERO -->
   <section class="hero" id="hero" aria-label="Hero">
-    <div class="hero-bg parallax-bg" style="background-image: url('1688924803769.jpg');" aria-hidden="true"></div>
+    <div class="hero-bg parallax-bg" style="background-image: url('background.png');" aria-hidden="true"></div>
     <div class="hero-overlay" aria-hidden="true"></div>
     <div class="hero-content">
-      <p class="hero-eyebrow reveal-up">Nail Artistry · Since 2020</p>
+      <p class="hero-eyebrow reveal-up">Arte en Uñas · Desde 2020</p>
       <h1 class="hero-title reveal-up delay-1">
         El Arte de la<br /><em>Perfección Dorada</em>
       </h1>
       <p class="hero-subtitle reveal-up delay-2">Tratamientos exclusivos, libres de tóxicos,<br />diseñados para la mujer que exige lo mejor.</p>
       <div class="hero-actions reveal-up delay-3">
         <a href="#booking" class="btn btn-gold">Reserva Tu Cita</a>
-        <a href="#services" class="btn btn-outline">Ver Servicios</a>
+        <a href="#services" class="btn btn-gold">Ver Servicios</a>
       </div>
     </div>
     <div class="hero-scroll-indicator" aria-hidden="true">
@@ -73,9 +71,14 @@
         <div class="about-img-frame">
           <img src="1701646232903.jpg" alt="Luxury nail treatment at Gold Nails Spa" loading="lazy" />
         </div>
-        <div class="about-badge" aria-hidden="true">
+        <div class="about-badge" tabindex="0" aria-label="Usamos productos libres de TPO y DMPT">
           <span>100%</span>
           <small>Toxic Free</small>
+          <div class="badge-thought" role="tooltip">
+            Usamos productos libres de:<br />
+            <strong>TPO</strong> (Óxido de trimetilbenzoildifenilfosfina)<br />
+            y <strong>DMPT</strong> (Dimetil p-toluidina)
+          </div>
         </div>
       </div>
       <div class="about-text reveal-right">
@@ -102,59 +105,44 @@
     </div>
     <div class="services-grid">
       <article class="service-card reveal-up" tabindex="0">
-        <div class="service-icon" aria-hidden="true">
-          <svg width="36" height="36" viewBox="0 0 36 36" fill="none"><path d="M18 4C18 4 12 10 12 18C12 22.4 14.8 26 18 26C21.2 26 24 22.4 24 18C24 10 18 4 18 4Z" stroke="#D4AF37" stroke-width="1.2" fill="none"/><path d="M10 28H26M14 32H22" stroke="#D4AF37" stroke-width="1.2" stroke-linecap="round"/></svg>
-        </div>
-        <h3 class="service-name">Signature Manicure</h3>
-        <p class="service-desc">Limado, cutícula, masaje con aceites esenciales y acabado brillante o mate de larga duración.</p>
-        <p class="service-price"><span>desde</span> $45</p>
+        <h3 class="service-name">Manos Semipermanente — Mujeres</h3>
+        <p class="service-desc">Limpieza profunda en seco con exfoliación y esmaltado en gel. Incluye una uña decorada o diseño sencillo, y retiro del diseño realizado en el spa.</p>
+        <p class="service-price"><span>desde</span> $48.000</p>
         <a href="#booking" class="btn btn-ghost">Reservar</a>
       </article>
       <article class="service-card reveal-up delay-1" tabindex="0">
-        <div class="service-icon" aria-hidden="true">
-          <svg width="36" height="36" viewBox="0 0 36 36" fill="none"><rect x="8" y="8" width="20" height="20" rx="3" stroke="#D4AF37" stroke-width="1.2" fill="none"/><path d="M13 18L16 21L23 14" stroke="#D4AF37" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </div>
-        <h3 class="service-name">Elite Gel System</h3>
-        <p class="service-desc">Gel de alta gama con curado UV de precisión. Acabado espejo o textura suave. Dura hasta 3 semanas.</p>
-        <p class="service-price"><span>desde</span> $65</p>
+        <h3 class="service-name">Soft Gel — Press On</h3>
+        <p class="service-desc">Sistema moderno para alargar uñas de forma rápida y con acabado natural. Limpieza en seco, exfoliación y esmaltado semipermanente.</p>
+        <p class="service-price"><span>desde</span> $85.000</p>
         <a href="#booking" class="btn btn-ghost">Reservar</a>
       </article>
       <article class="service-card reveal-up delay-2" tabindex="0">
-        <div class="service-icon" aria-hidden="true">
-          <svg width="36" height="36" viewBox="0 0 36 36" fill="none"><path d="M9 28L18 6L27 28" stroke="#D4AF37" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 21H24" stroke="#D4AF37" stroke-width="1.2" stroke-linecap="round"/></svg>
-        </div>
-        <h3 class="service-name">Acrylic Sculpting</h3>
-        <p class="service-desc">Escultura acrílica personalizada con diseño 3D. Formas coffin, almond, ballerina o stiletto.</p>
-        <p class="service-price"><span>desde</span> $80</p>
+        <h3 class="service-name">Acrílicas Esculpidas con Molde</h3>
+        <p class="service-desc">Limpieza en seco, uñas acrílicas esculpidas hasta largor número 3 con esmaltado semipermanente.</p>
+        <p class="service-price"><span>desde</span> $125.000</p>
         <a href="#booking" class="btn btn-ghost">Reservar</a>
       </article>
       <article class="service-card reveal-up delay-3" tabindex="0">
-        <div class="service-icon" aria-hidden="true">
-          <svg width="36" height="36" viewBox="0 0 36 36" fill="none"><circle cx="18" cy="16" r="8" stroke="#D4AF37" stroke-width="1.2" fill="none"/><path d="M18 8V6M18 26V24M8 16H6M30 16H28" stroke="#D4AF37" stroke-width="1.2" stroke-linecap="round"/><circle cx="18" cy="16" r="3" fill="#D4AF37" opacity="0.4"/></svg>
-        </div>
-        <h3 class="service-name">24K Gold Pedicure</h3>
-        <p class="service-desc">Ritual de pedicura con láminas de oro de 24k, exfoliación con sales del Mar Muerto y masaje de pies.</p>
-        <p class="service-price"><span>desde</span> $95</p>
+        <h3 class="service-name">Manicura Tradicional</h3>
+        <p class="service-desc">Limpieza profunda, exfoliación y esmaltado tradicional. Incluye una uña con sticker; diseño a mano disponible con costo adicional.</p>
+        <p class="service-price"><span>desde</span> $20.000</p>
         <a href="#booking" class="btn btn-ghost">Reservar</a>
       </article>
       <article class="service-card reveal-up delay-1" tabindex="0">
-        <div class="service-icon" aria-hidden="true">
-          <svg width="36" height="36" viewBox="0 0 36 36" fill="none"><path d="M14 10C14 10 10 13 10 18C10 21.3 11.8 24 14 24" stroke="#D4AF37" stroke-width="1.2" stroke-linecap="round" fill="none"/><path d="M22 10C22 10 26 13 26 18C26 21.3 24.2 24 22 24" stroke="#D4AF37" stroke-width="1.2" stroke-linecap="round" fill="none"/><circle cx="18" cy="18" r="4" stroke="#D4AF37" stroke-width="1.2" fill="none"/></svg>
-        </div>
-        <h3 class="service-name">Nail Art Couture</h3>
-        <p class="service-desc">Diseños artísticos personalizados: encapsulados florales, cromo holográfico, marbling y más.</p>
-        <p class="service-price"><span>desde</span> $75</p>
+        <h3 class="service-name">Pies Semipermanente — Mujeres</h3>
+        <p class="service-desc">Limpieza profunda en seco con exfoliación y esmaltado en gel. Incluye una uña decorada o diseño sencillo, y retiro del diseño realizado aquí.</p>
+        <p class="service-price"><span>desde</span> $42.000</p>
         <a href="#booking" class="btn btn-ghost">Reservar</a>
       </article>
       <article class="service-card reveal-up delay-2" tabindex="0">
-        <div class="service-icon" aria-hidden="true">
-          <svg width="36" height="36" viewBox="0 0 36 36" fill="none"><path d="M18 4L20.5 12H29L22.3 17.1L24.8 25L18 20.2L11.2 25L13.7 17.1L7 12H15.5L18 4Z" stroke="#D4AF37" stroke-width="1.2" fill="none" stroke-linejoin="round"/></svg>
-        </div>
-        <h3 class="service-name">Spa Ritual Premium</h3>
-        <p class="service-desc">Experiencia completa: manicure + pedicure + masaje de manos y pies con aromaterapia de lujo.</p>
-        <p class="service-price"><span>desde</span> $150</p>
+        <h3 class="service-name">Retoque Press On</h3>
+        <p class="service-desc">Retiro del esmaltado, limpieza en seco, nivelación del área de crecimiento con base rubber y esmaltado semipermanente.</p>
+        <p class="service-price"><span>desde</span> $70.000</p>
         <a href="#booking" class="btn btn-ghost">Reservar</a>
       </article>
+    </div>
+    <div class="services-more reveal-up">
+      <a href="services.html" class="btn btn-gold">Ver Más Servicios</a>
     </div>
   </section>
 
@@ -333,9 +321,7 @@
       <div class="footer-brand">
         <a href="#hero" class="nav-logo" aria-label="Gold Nails Spa">
           <span class="logo-icon">
-            <svg width="24" height="24" viewBox="0 0 28 28" fill="none" aria-hidden="true">
-              <path d="M14 2L16.8 9.2L24.5 9.2L18.3 13.8L20.6 21L14 16.8L7.4 21L9.7 13.8L3.5 9.2L11.2 9.2L14 2Z" fill="#D4AF37"/>
-            </svg>
+            <img src="logo.png" alt="Gold Nails Spa logo" class="logo-img" />
           </span>
           <span class="logo-text">Gold Nails <em>Spa</em></span>
         </a>

@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Todos los Servicios — Gold Nails Spa</title>
+  <meta name="description" content="Catálogo completo de servicios de Gold Nails Spa. Manicura, pedicura, acrílicas, gel y más." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Josefin+Sans:wght@200;300;400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    /* ── Page-specific overrides ── */
+    .services-page-hero {
+      background: var(--black);
+      border-bottom: 1px solid var(--gold-border);
+      padding: clamp(100px, 14vw, 160px) 2rem clamp(48px, 6vw, 72px);
+      text-align: center;
+    }
+    .services-page-hero .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-family: var(--font-sans);
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 2rem;
+      transition: opacity 0.25s;
+    }
+    .services-page-hero .back-link:hover { opacity: 0.7; }
+    .services-page-hero .back-link svg { flex-shrink: 0; }
+
+    .services-all {
+      background: var(--black);
+      padding: clamp(48px, 6vw, 80px) 2rem clamp(64px, 10vw, 120px);
+    }
+
+    .services-category {
+      max-width: var(--container);
+      margin: 0 auto 4rem;
+    }
+    .services-category-title {
+      font-family: var(--font-serif);
+      font-size: 1.6rem;
+      font-weight: 400;
+      font-style: italic;
+      letter-spacing: 0.02em;
+      text-transform: none;
+      color: var(--gold);
+      margin-bottom: 1.6rem;
+      padding-bottom: 0.8rem;
+      border-bottom: 1px solid var(--gold-border);
+    }
+
+    .services-all-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+
+    .service-all-card {
+      background: var(--black-card);
+      border: 1px solid #2a2a2a;
+      border-radius: 12px;
+      padding: 2rem 1.8rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      transition: background 0.3s, border-color 0.3s, transform 0.3s var(--ease-luxury),
+                  box-shadow 0.3s var(--ease-luxury);
+      position: relative;
+      overflow: hidden;
+    }
+    .service-all-card::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0;
+      height: 2px; width: 0;
+      background: linear-gradient(90deg, var(--gold), transparent);
+      border-radius: 0 0 12px 12px;
+      transition: width 0.5s var(--ease-luxury);
+    }
+    .service-all-card:hover {
+      background: #1c1c1c;
+      border-color: var(--gold);
+      transform: translateY(-4px);
+      box-shadow: 0 12px 48px rgba(212, 175, 55, 0.22), 0 0 0 1px rgba(212, 175, 55, 0.15);
+    }
+    .service-all-card:hover::after { width: 100%; }
+
+    .sac-name {
+      font-family: var(--font-serif);
+      font-size: 1.25rem;
+      font-weight: 500;
+      color: var(--cream);
+      line-height: 1.3;
+      margin-bottom: 0.3rem;
+    }
+    .sac-desc {
+      font-size: 0.88rem;
+      color: var(--grey);
+      line-height: 1.75;
+      flex: 1;
+    }
+    .sac-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 1rem;
+      padding-top: 0.8rem;
+      border-top: 1px solid #1f1f1f;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+    .sac-price {
+      font-family: var(--font-serif);
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: var(--gold);
+    }
+    .sac-price span {
+      font-family: var(--font-sans);
+      font-size: 0.62rem;
+      font-weight: 400;
+      color: var(--grey);
+      letter-spacing: 0.05em;
+      display: block;
+      margin-bottom: 0.1rem;
+    }
+    .sac-duration {
+      font-family: var(--font-sans);
+      font-size: 0.65rem;
+      color: var(--grey-light);
+      letter-spacing: 0.08em;
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
+    .services-page-cta {
+      text-align: center;
+      padding: 3rem 2rem 0;
+      max-width: var(--container);
+      margin: 0 auto;
+    }
+    .services-page-cta p {
+      font-family: var(--font-serif);
+      font-style: italic;
+      color: var(--grey);
+      font-size: 0.95rem;
+      margin-bottom: 1.5rem;
+    }
+
+    @media (max-width: 900px) {
+      .services-all-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 560px) {
+      .services-all-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVIGATION -->
+  <nav class="navbar scrolled" id="navbar" role="navigation" aria-label="Main navigation">
+    <div class="nav-container">
+      <a href="index.html#hero" class="nav-logo" aria-label="Gold Nails Spa Home">
+        <span class="logo-icon">
+          <img src="logo.png" alt="Gold Nails Spa logo" class="logo-img" />
+        </span>
+        <span class="logo-text">Gold Nails <em>Spa</em></span>
+      </a>
+      <ul class="nav-links" role="list">
+        <li><a href="index.html#about">Filosofía</a></li>
+        <li><a href="index.html#services">Servicios</a></li>
+        <li><a href="index.html#gallery">Galería</a></li>
+        <li><a href="index.html#testimonials">Reseñas</a></li>
+        <li><a href="index.html#booking" class="nav-cta">Reservar</a></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobile-menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="mobile-menu" id="mobile-menu" role="dialog" aria-label="Mobile navigation">
+      <ul role="list">
+        <li><a href="index.html#about">Filosofía</a></li>
+        <li><a href="index.html#services">Servicios</a></li>
+        <li><a href="index.html#gallery">Galería</a></li>
+        <li><a href="index.html#testimonials">Reseñas</a></li>
+        <li><a href="index.html#booking">Reservar</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- PAGE HERO -->
+  <header class="services-page-hero">
+    <p class="section-eyebrow">Catálogo Completo</p>
+    <h1 class="section-title">Todos Nuestros<br /><em>Servicios</em></h1>
+  </header>
+
+  <!-- ALL SERVICES -->
+  <main class="services-all">
+
+    <!-- MANOS -->
+    <div class="services-category">
+      <p class="services-category-title">Manos</p>
+      <div class="services-all-grid">
+
+        <div class="service-all-card">
+          <h2 class="sac-name">Manos Tradicionales</h2>
+          <p class="sac-desc">Limpieza profunda, exfoliación y esmaltado tradicional. Va incluida una uña con sticker; si desea un diseño a mano el precio varía entre $500 a $2.000.</p>
+          <div class="sac-meta">
+            <div class="sac-price"><span>desde</span>$20.000</div>
+            <div class="sac-duration">
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><circle cx="6" cy="6" r="5" stroke="#888" stroke-width="1"/><path d="M6 3V6L8 8" stroke="#888" stroke-width="1" stroke-linecap="round"/></svg>
+              45 min
+            </div>
+          </div>
+        </div>
+
+        <div class="service-all-card">
+          <h2 class="sac-name">Manos Semipermanente — Mujeres</h2>
+          <p class="sac-desc">Limpieza profunda en seco con exfoliación y esmaltado en gel. Va incluida una uña decorada o un diseño sencillo, y adicional se incluye el retiro del diseño realizado aquí en el spa.</p>
+          <div class="sac-meta">
+            <div class="sac-price"><span>desde</span>$48.000</div>
+            <div class="sac-duration">
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><circle cx="6" cy="6" r="5" stroke="#888" stroke-width="1"/><path d="M6 3V6L8 8" stroke="#888" stroke-width="1" stroke-linecap="round"/></svg>
+              60 min
+            </div>
+          </div>
+        </div>
+
+        <div class="service-all-card">
+          <h2 class="sac-name">Manos Semipermanente con Base Rubber</h2>
+          <p class="sac-desc">La base rubber nivela la uña y aporta dureza a las uñas frágiles. Limpieza profunda en seco con exfoliación y esmaltado en gel. Incluye una uña decorada o diseño sencillo.</p>
+          <div class="sac-meta">
+            <div class="sac-price"><span>desde</span>$58.000</div>
+            <div class="sac-duration">
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><circle cx="6" cy="6" r="5" stroke="#888" stroke-width="1"/><path d="M6 3V6L8 8" stroke="#888" stroke-width="1" stroke-linecap="round"/></svg>
+              80 min
+            </div>
+          </div>
+        </div>
+
+        <div class="service-all-card">
+          <h2 class="sac-name">Manos Semipermanente — Hombres</h2>
+          <p class="sac-desc">Limpieza profunda en seco con exfoliación y esmaltado en gel. Adicional se incluye el retiro si se lo realizaron aquí en Gold Nails Spa.</p>
+          <div class="sac-meta">
+            <div class="sac-price"><span>desde</span>$40.000</div>
+            <div class="sac-duration">
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><circle cx="6" cy="6" r="5" stroke="#888" stroke-width="1"/><path d="M6 3V6L8 8" stroke="#888" stroke-width="1" stroke-linecap="round"/></svg>
+              50 min
+            </div>
+          </div>
+        </div>
+
+        <div class="service-all-card">
+          <h2 class="sac-name">Limpieza</h2>
+          <p class="sac-desc">Limpieza profunda y exfoliación de manos.</p>
+          <div class="sac-meta">
+            <div class="sac-price"><span>desde</span>$15.000</div>
+            <div class="sac-duration">
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><circle cx="6" cy="6" r="5" stroke="#888" stroke-width="1"/><path d="M6 3V6L8 8" stroke="#888" stroke-width="1" stroke-linecap="round"/></svg>
+              30 min
+            </div>
+          </div>
+        </div>
+
+        <div class="service-all-card">
+          <h2 class="sac-name">Cambio de Esmalte</h2>
+          <p class="sac-desc">Cambio de esmalte tradicional.</p>
+          <div class="sac-meta">
+            <div class="sac-price"><span>desde</span>$10.000</div>
+            <div class="sac-duration">
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><circle cx="6" cy="6" r="5" stroke="#888" stroke-width="1"/><path d="M6 3V6L8 8" stroke="#888" stroke-width="1" stroke-linecap="round"/></svg>
+              20 min
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- PIES -->
+    <div class="services-category">
+      <p class="services-category-title">Pies</p>
+      <div class="services-all-grid">
+
+        <div class="service-all-card">
+          <h2 class="sac-name">Pies Tradicionales</h2>
+          <p class="sac-desc">Limpieza profunda, exfoliación, máquina masajeadora térmica 5 min y esmaltado tradicional. Incluye una uña con sticker; diseño a mano disponible con costo adicional.</p>
+          <div class="sac-meta">
+            <div class="sac-price"><span>desde</span>$23.000</div>
+            <div class="sac-duration">
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><circle cx="6" cy="6" r="5" stroke="#888" stroke-width="1"/><path d="M6 3V6L8 8" stroke="#888" stroke-width="1" stroke-linecap="round"/></svg>
+              60 min
+            </div>
+          </div>
+        </div>
+
+        <div class="service-all-card">
+          <h2 class="sac-name">Pies Semipermanente — Mujeres</h2>
+          <p class="sac-desc">Limpieza profunda en seco con exfoliación y esmaltado en gel. Incluye una uña decorada o diseño sencillo, y retiro del diseño realizado aquí.</p>
+          <div class="sac-meta">
+            <div class="sac-price"><span>desde</span>$42.000</div>
+            <div class="sac-duration">
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><circle cx="6" cy="6" r="5" stroke="#888" stroke-width="1"/><path d="M6 3V6L8 8" stroke="#888" stroke-width="1" stroke-linecap="round"/></svg>
+              60 min
+            </div>
+          </div>
+        </div>
+
+        <div class="service-all-card">
+          <h2 class="sac-name">Pies Semipermanente — Hombres</h2>
+          <p class="sac-desc">Limpieza profunda en seco con exfoliación y esmaltado en gel, máquina masajeadora térmica 5 min. Incluye retiro si se realizó aquí en Gold Nails Spa.</p>
+          <div class="sac-meta">
+            <div class="sac-price"><span>desde</span>$43.000</div>
+            <div class="sac-duration">
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><circle cx="6" cy="6" r="5" stroke="#888" stroke-width="1"/><path d="M6 3V6L8 8" stroke="#888" stroke-width="1" stroke-linecap="round"/></svg>
+              60 min
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ACRÍLICAS & EXTENSIONES -->
+    <div class="services-category">
+      <p class="services-category-title">Acrílicas &amp; Extensiones</p>
+      <div class="services-all-grid">
+
+        <div class="service-all-card">
+          <h2 class="sac-name">Baño en Acrílico</h2>
+          <p class="sac-desc">Limpieza en seco, recubrimiento de uña natural con acrílico y esmaltado semipermanente.</p>
+          <div class="sac-meta">
+            <div class="sac-price"><span>desde</span>$85.000</div>
+            <div class="sac-duration">
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><circle cx="6" cy="6" r="5" stroke="#888" stroke-width="1"/><path d="M6 3V6L8 8" stroke="#888" stroke-width="1" stroke-linecap="round"/></svg>
+              90 min
+            </div>
+          </div>
+        </div>
+
+        <div class="service-all-card">
+          <h2 class="sac-name">Retoque de Baño en Acrílicas</h2>
+          <p class="sac-desc">Retiro del esmaltado semipermanente, limpieza profunda en seco y retoque del baño con esmaltado semipermanente.</p>
+          <div class="sac-meta">
+            <div class="sac-price"><span>desde</span>$70.000</div>
+            <div class="sac-duration">
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><circle cx="6" cy="6" r="5" stroke="#888" stroke-width="1"/><path d="M6 3V6L8 8" stroke="#888" stroke-width="1" stroke-linecap="round"/></svg>
+              90 min
+            </div>
+          </div>
+        </div>
+
+        <div class="service-all-card">
+          <h2 class="sac-name">Uñas Acrílicas con Tip</h2>
+          <p class="sac-desc">Limpieza en seco, extensión de uña con tip y baño en acrílico con esmaltado semipermanente.</p>
+          <div class="sac-meta">
+            <div class="sac-price"><span>desde</span>$90.000</div>
+            <div class="sac-duration">
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><circle cx="6" cy="6" r="5" stroke="#888" stroke-width="1"/><path d="M6 3V6L8 8" stroke="#888" stroke-width="1" stroke-linecap="round"/></svg>
+              120 min
+            </div>
+          </div>
+        </div>
+
+        <div class="service-all-card">
+          <h2 class="sac-name">Acrílicas Esculpidas con Molde</h2>
+          <p class="sac-desc">Limpieza en seco, uñas acrílicas esculpidas hasta largor número 3 con esmaltado semipermanente.</p>
+          <div class="sac-meta">
+            <div class="sac-price"><span>desde</span>$125.000</div>
+            <div class="sac-duration">
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><circle cx="6" cy="6" r="5" stroke="#888" stroke-width="1"/><path d="M6 3V6L8 8" stroke="#888" stroke-width="1" stroke-linecap="round"/></svg>
+              150 min
+            </div>
+          </div>
+        </div>
+
+        <div class="service-all-card">
+          <h2 class="sac-name">Retoque de Acrílicas Esculpidas</h2>
+          <p class="sac-desc">Retiro del esmaltado semipermanente, limpieza profunda en seco y retoque del acrílico con esmaltado semipermanente.</p>
+          <div class="sac-meta">
+            <div class="sac-price"><span>desde</span>$85.000</div>
+            <div class="sac-duration">
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><circle cx="6" cy="6" r="5" stroke="#888" stroke-width="1"/><path d="M6 3V6L8 8" stroke="#888" stroke-width="1" stroke-linecap="round"/></svg>
+              120 min
+            </div>
+          </div>
+        </div>
+
+        <div class="service-all-card">
+          <h2 class="sac-name">Técnica Dipping</h2>
+          <p class="sac-desc">Limpieza en seco. Aplicación de capas de polvo acrílico para mayor fortaleza y duración, culminando con esmaltado semipermanente.</p>
+          <div class="sac-meta">
+            <div class="sac-price"><span>desde</span>$60.000</div>
+            <div class="sac-duration">
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><circle cx="6" cy="6" r="5" stroke="#888" stroke-width="1"/><path d="M6 3V6L8 8" stroke="#888" stroke-width="1" stroke-linecap="round"/></svg>
+              60 min
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- SOFT GEL & RETOQUES -->
+    <div class="services-category">
+      <p class="services-category-title">Soft Gel &amp; Retoques</p>
+      <div class="services-all-grid">
+
+        <div class="service-all-card">
+          <h2 class="sac-name">Soft Gel — Press On</h2>
+          <p class="sac-desc">Sistema moderno para alargar uñas de forma rápida y con acabado natural. Limpieza en seco, exfoliación y esmaltado semipermanente.</p>
+          <div class="sac-meta">
+            <div class="sac-price"><span>desde</span>$85.000</div>
+            <div class="sac-duration">
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><circle cx="6" cy="6" r="5" stroke="#888" stroke-width="1"/><path d="M6 3V6L8 8" stroke="#888" stroke-width="1" stroke-linecap="round"/></svg>
+              90 min
+            </div>
+          </div>
+        </div>
+
+        <div class="service-all-card">
+          <h2 class="sac-name">Retoque Press On</h2>
+          <p class="sac-desc">Retiro del esmaltado semipermanente, limpieza en seco, nivelación del área de crecimiento con base rubber y esmaltado semipermanente.</p>
+          <div class="sac-meta">
+            <div class="sac-price"><span>desde</span>$70.000</div>
+            <div class="sac-duration">
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><circle cx="6" cy="6" r="5" stroke="#888" stroke-width="1"/><path d="M6 3V6L8 8" stroke="#888" stroke-width="1" stroke-linecap="round"/></svg>
+              70 min
+            </div>
+          </div>
+        </div>
+
+        <div class="service-all-card">
+          <h2 class="sac-name">Punto de Acrílico</h2>
+          <p class="sac-desc">Si tienes alguna fisura en la uña y no quieres bajar el largor, el punto de acrílico cubre esa fisura sin retirar el diseño.</p>
+          <div class="sac-meta">
+            <div class="sac-price"><span>desde</span>$2.000</div>
+            <div class="sac-duration">
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><circle cx="6" cy="6" r="5" stroke="#888" stroke-width="1"/><path d="M6 3V6L8 8" stroke="#888" stroke-width="1" stroke-linecap="round"/></svg>
+              15 min
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- RETIROS -->
+    <div class="services-category">
+      <p class="services-category-title">Retiros</p>
+      <div class="services-all-grid">
+
+        <div class="service-all-card">
+          <h2 class="sac-name">Retiro de Semipermanente</h2>
+          <p class="sac-desc">Si traes un diseño elaborado en otro lugar se cobra el retiro. Proceso especializado para no maltratar la placa ungueal.</p>
+          <div class="sac-meta">
+            <div class="sac-price"><span>desde</span>$12.000</div>
+            <div class="sac-duration">
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><circle cx="6" cy="6" r="5" stroke="#888" stroke-width="1"/><path d="M6 3V6L8 8" stroke="#888" stroke-width="1" stroke-linecap="round"/></svg>
+              30 min
+            </div>
+          </div>
+        </div>
+
+        <div class="service-all-card">
+          <h2 class="sac-name">Retiro de Acrílico u Otro Sistema</h2>
+          <p class="sac-desc">Proceso especializado para no maltratar la placa ungueal, utilizando productos de calidad que cuidan tus uñas.</p>
+          <div class="sac-meta">
+            <div class="sac-price"><span>desde</span>$20.000</div>
+            <div class="sac-duration">
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><circle cx="6" cy="6" r="5" stroke="#888" stroke-width="1"/><path d="M6 3V6L8 8" stroke="#888" stroke-width="1" stroke-linecap="round"/></svg>
+              45 min
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <div class="services-page-cta">
+      <p>¿Lista para tu próxima cita?</p>
+      <a href="index.html#booking" class="btn btn-gold">Reserva Tu Cita</a>
+    </div>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer" role="contentinfo">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="index.html#hero" class="nav-logo" aria-label="Gold Nails Spa">
+          <span class="logo-icon">
+            <img src="logo.png" alt="Gold Nails Spa logo" class="logo-img" />
+          </span>
+          <span class="logo-text">Gold Nails <em>Spa</em></span>
+        </a>
+        <p class="footer-tagline">El arte de la perfección,<br />en cada detalle.</p>
+        <div class="footer-social" role="list" aria-label="Social media links">
+          <a href="#" class="social-link" aria-label="Instagram" role="listitem">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+          </a>
+          <a href="#" class="social-link" aria-label="TikTok" role="listitem">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"/></svg>
+          </a>
+          <a href="#" class="social-link" aria-label="Facebook" role="listitem">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+          </a>
+        </div>
+      </div>
+      <nav class="footer-nav" aria-label="Footer navigation">
+        <div class="footer-nav-col">
+          <h4>Servicios</h4>
+          <ul role="list">
+            <li><a href="#manos">Manos</a></li>
+            <li><a href="#pies">Pies</a></li>
+            <li><a href="#acrilicas">Acrílicas</a></li>
+            <li><a href="#softgel">Soft Gel</a></li>
+            <li><a href="#retiros">Retiros</a></li>
+          </ul>
+        </div>
+        <div class="footer-nav-col">
+          <h4>Empresa</h4>
+          <ul role="list">
+            <li><a href="index.html#about">Nuestra Filosofía</a></li>
+            <li><a href="index.html#gallery">Galería</a></li>
+            <li><a href="index.html#testimonials">Reseñas</a></li>
+            <li><a href="index.html#booking">Reservaciones</a></li>
+          </ul>
+        </div>
+        <div class="footer-nav-col">
+          <h4>Visítanos</h4>
+          <address>
+            <p>123 Luxury Avenue<br />Suite 500<br />Miami, FL 33101</p>
+            <p><a href="tel:+13055550190">+1 (305) 555-0190</a></p>
+            <p><a href="mailto:hello@goldnailsspa.com">hello@goldnailsspa.com</a></p>
+          </address>
+        </div>
+      </nav>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-legal">© <span id="current-year">2024</span> Gold Nails Spa. Todos los derechos reservados.</p>
+      <div class="footer-legal-links">
+        <a href="#">Privacidad</a>
+        <span aria-hidden="true">·</span>
+        <a href="#">Términos</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Hamburger menu
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobile-menu');
+    if (hamburger && mobileMenu) {
+      hamburger.addEventListener('click', () => {
+        const open = hamburger.classList.toggle('open');
+        mobileMenu.classList.toggle('open', open);
+        hamburger.setAttribute('aria-expanded', String(open));
+        document.body.style.overflow = open ? 'hidden' : '';
+      });
+      mobileMenu.querySelectorAll('a').forEach(l => l.addEventListener('click', () => {
+        hamburger.classList.remove('open');
+        mobileMenu.classList.remove('open');
+        hamburger.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
+      }));
+    }
+    // Footer year
+    const yr = document.getElementById('current-year');
+    if (yr) yr.textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
