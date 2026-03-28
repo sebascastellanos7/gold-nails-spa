@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gold Nails Spa — Luxury Nail Artistry</title>
+  <meta name="description" content="Gold Nails Spa — Ultra-premium nail artistry. Toxic-free, exclusive treatments in a 5-star environment." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Josefin+Sans:wght@200;300;400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- NAVIGATION -->
+  <nav class="navbar" id="navbar" role="navigation" aria-label="Main navigation">
+    <div class="nav-container">
+      <a href="#hero" class="nav-logo" aria-label="Gold Nails Spa Home">
+        <span class="logo-icon">
+          <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M14 2L16.8 9.2L24.5 9.2L18.3 13.8L20.6 21L14 16.8L7.4 21L9.7 13.8L3.5 9.2L11.2 9.2L14 2Z" fill="#D4AF37"/>
+          </svg>
+        </span>
+        <span class="logo-text">Gold Nails <em>Spa</em></span>
+      </a>
+      <ul class="nav-links" role="list">
+        <li><a href="#about">Filosofía</a></li>
+        <li><a href="#services">Servicios</a></li>
+        <li><a href="#gallery">Galería</a></li>
+        <li><a href="#testimonials">Reseñas</a></li>
+        <li><a href="#booking" class="nav-cta">Reservar</a></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobile-menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="mobile-menu" id="mobile-menu" role="dialog" aria-label="Mobile navigation">
+      <ul role="list">
+        <li><a href="#about">Filosofía</a></li>
+        <li><a href="#services">Servicios</a></li>
+        <li><a href="#gallery">Galería</a></li>
+        <li><a href="#testimonials">Reseñas</a></li>
+        <li><a href="#booking">Reservar</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" id="hero" aria-label="Hero">
+    <div class="hero-bg parallax-bg" style="background-image: url('1688924803769.jpg');" aria-hidden="true"></div>
+    <div class="hero-overlay" aria-hidden="true"></div>
+    <div class="hero-content">
+      <p class="hero-eyebrow reveal-up">Nail Artistry · Since 2020</p>
+      <h1 class="hero-title reveal-up delay-1">
+        El Arte de la<br /><em>Perfección Dorada</em>
+      </h1>
+      <p class="hero-subtitle reveal-up delay-2">Tratamientos exclusivos, libres de tóxicos,<br />diseñados para la mujer que exige lo mejor.</p>
+      <div class="hero-actions reveal-up delay-3">
+        <a href="#booking" class="btn btn-gold">Reserva Tu Cita</a>
+        <a href="#services" class="btn btn-outline">Ver Servicios</a>
+      </div>
+    </div>
+    <div class="hero-scroll-indicator" aria-hidden="true">
+      <span></span>
+      <p>Descubrir</p>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about" id="about" aria-labelledby="about-title">
+    <div class="about-container">
+      <div class="about-image reveal-left">
+        <div class="about-img-frame">
+          <img src="1701646232903.jpg" alt="Luxury nail treatment at Gold Nails Spa" loading="lazy" />
+        </div>
+        <div class="about-badge" aria-hidden="true">
+          <span>100%</span>
+          <small>Toxic Free</small>
+        </div>
+      </div>
+      <div class="about-text reveal-right">
+        <p class="section-eyebrow">Nuestra Filosofía</p>
+        <h2 class="section-title" id="about-title">Donde el Lujo<br />Se Encuentra con<br /><em>el Bienestar</em></h2>
+        <p class="about-body">En Gold Nails Spa creemos que el cuidado de las uñas es una forma de arte — un ritual de belleza que merece los más altos estándares. Trabajamos exclusivamente con productos libres de tóxicos, certificados y de grado profesional, para garantizar no solo una apariencia impecable, sino una salud óptima.</p>
+        <p class="about-body">Cada visita es una experiencia sensorial completa: desde la calidez de nuestro ambiente diseñado meticulosamente, hasta la maestría técnica de nuestras artistas certificadas.</p>
+        <ul class="about-pillars" role="list">
+          <li><span class="pillar-icon" aria-hidden="true">◆</span> Productos 100% no tóxicos</li>
+          <li><span class="pillar-icon" aria-hidden="true">◆</span> Artistas certificadas internacionalmente</li>
+          <li><span class="pillar-icon" aria-hidden="true">◆</span> Protocolos de higiene de 5 estrellas</li>
+          <li><span class="pillar-icon" aria-hidden="true">◆</span> Experiencia personalizada y exclusiva</li>
+        </ul>
+        <a href="#booking" class="btn btn-gold">Conocer Más</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="services" id="services" aria-labelledby="services-title">
+    <div class="section-header reveal-up">
+      <p class="section-eyebrow">Menú de Servicios</p>
+      <h2 class="section-title" id="services-title">Tratamientos de<br /><em>Alta Distinción</em></h2>
+    </div>
+    <div class="services-grid">
+      <article class="service-card reveal-up" tabindex="0">
+        <div class="service-icon" aria-hidden="true">
+          <svg width="36" height="36" viewBox="0 0 36 36" fill="none"><path d="M18 4C18 4 12 10 12 18C12 22.4 14.8 26 18 26C21.2 26 24 22.4 24 18C24 10 18 4 18 4Z" stroke="#D4AF37" stroke-width="1.2" fill="none"/><path d="M10 28H26M14 32H22" stroke="#D4AF37" stroke-width="1.2" stroke-linecap="round"/></svg>
+        </div>
+        <h3 class="service-name">Signature Manicure</h3>
+        <p class="service-desc">Limado, cutícula, masaje con aceites esenciales y acabado brillante o mate de larga duración.</p>
+        <p class="service-price"><span>desde</span> $45</p>
+        <a href="#booking" class="btn btn-ghost">Reservar</a>
+      </article>
+      <article class="service-card reveal-up delay-1" tabindex="0">
+        <div class="service-icon" aria-hidden="true">
+          <svg width="36" height="36" viewBox="0 0 36 36" fill="none"><rect x="8" y="8" width="20" height="20" rx="3" stroke="#D4AF37" stroke-width="1.2" fill="none"/><path d="M13 18L16 21L23 14" stroke="#D4AF37" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h3 class="service-name">Elite Gel System</h3>
+        <p class="service-desc">Gel de alta gama con curado UV de precisión. Acabado espejo o textura suave. Dura hasta 3 semanas.</p>
+        <p class="service-price"><span>desde</span> $65</p>
+        <a href="#booking" class="btn btn-ghost">Reservar</a>
+      </article>
+      <article class="service-card reveal-up delay-2" tabindex="0">
+        <div class="service-icon" aria-hidden="true">
+          <svg width="36" height="36" viewBox="0 0 36 36" fill="none"><path d="M9 28L18 6L27 28" stroke="#D4AF37" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 21H24" stroke="#D4AF37" stroke-width="1.2" stroke-linecap="round"/></svg>
+        </div>
+        <h3 class="service-name">Acrylic Sculpting</h3>
+        <p class="service-desc">Escultura acrílica personalizada con diseño 3D. Formas coffin, almond, ballerina o stiletto.</p>
+        <p class="service-price"><span>desde</span> $80</p>
+        <a href="#booking" class="btn btn-ghost">Reservar</a>
+      </article>
+      <article class="service-card reveal-up delay-3" tabindex="0">
+        <div class="service-icon" aria-hidden="true">
+          <svg width="36" height="36" viewBox="0 0 36 36" fill="none"><circle cx="18" cy="16" r="8" stroke="#D4AF37" stroke-width="1.2" fill="none"/><path d="M18 8V6M18 26V24M8 16H6M30 16H28" stroke="#D4AF37" stroke-width="1.2" stroke-linecap="round"/><circle cx="18" cy="16" r="3" fill="#D4AF37" opacity="0.4"/></svg>
+        </div>
+        <h3 class="service-name">24K Gold Pedicure</h3>
+        <p class="service-desc">Ritual de pedicura con láminas de oro de 24k, exfoliación con sales del Mar Muerto y masaje de pies.</p>
+        <p class="service-price"><span>desde</span> $95</p>
+        <a href="#booking" class="btn btn-ghost">Reservar</a>
+      </article>
+      <article class="service-card reveal-up delay-1" tabindex="0">
+        <div class="service-icon" aria-hidden="true">
+          <svg width="36" height="36" viewBox="0 0 36 36" fill="none"><path d="M14 10C14 10 10 13 10 18C10 21.3 11.8 24 14 24" stroke="#D4AF37" stroke-width="1.2" stroke-linecap="round" fill="none"/><path d="M22 10C22 10 26 13 26 18C26 21.3 24.2 24 22 24" stroke="#D4AF37" stroke-width="1.2" stroke-linecap="round" fill="none"/><circle cx="18" cy="18" r="4" stroke="#D4AF37" stroke-width="1.2" fill="none"/></svg>
+        </div>
+        <h3 class="service-name">Nail Art Couture</h3>
+        <p class="service-desc">Diseños artísticos personalizados: encapsulados florales, cromo holográfico, marbling y más.</p>
+        <p class="service-price"><span>desde</span> $75</p>
+        <a href="#booking" class="btn btn-ghost">Reservar</a>
+      </article>
+      <article class="service-card reveal-up delay-2" tabindex="0">
+        <div class="service-icon" aria-hidden="true">
+          <svg width="36" height="36" viewBox="0 0 36 36" fill="none"><path d="M18 4L20.5 12H29L22.3 17.1L24.8 25L18 20.2L11.2 25L13.7 17.1L7 12H15.5L18 4Z" stroke="#D4AF37" stroke-width="1.2" fill="none" stroke-linejoin="round"/></svg>
+        </div>
+        <h3 class="service-name">Spa Ritual Premium</h3>
+        <p class="service-desc">Experiencia completa: manicure + pedicure + masaje de manos y pies con aromaterapia de lujo.</p>
+        <p class="service-price"><span>desde</span> $150</p>
+        <a href="#booking" class="btn btn-ghost">Reservar</a>
+      </article>
+    </div>
+  </section>
+
+  <!-- GALLERY -->
+  <section class="gallery" id="gallery" aria-labelledby="gallery-title">
+    <div class="section-header reveal-up">
+      <p class="section-eyebrow">Nail Art Gallery</p>
+      <h2 class="section-title" id="gallery-title">Obras de Arte<br /><em>en tus Manos</em></h2>
+    </div>
+    <div class="masonry-grid" role="list" aria-label="Gallery of nail art">
+      <figure class="masonry-item tall reveal-up" role="listitem">
+        <img src="1686542428584.jpg" alt="Luxury nail art design" loading="lazy" />
+        <figcaption class="masonry-overlay"><span>Signature Collection</span></figcaption>
+      </figure>
+      <figure class="masonry-item reveal-up delay-1" role="listitem">
+        <img src="1686542428554.jpg" alt="Elegant nail design" loading="lazy" />
+        <figcaption class="masonry-overlay"><span>Elite Gel Series</span></figcaption>
+      </figure>
+      <figure class="masonry-item reveal-up delay-2" role="listitem">
+        <img src="1686542376404.jpg" alt="Artistic nail sculpture" loading="lazy" />
+        <figcaption class="masonry-overlay"><span>Sculpted Perfection</span></figcaption>
+      </figure>
+      <figure class="masonry-item wide reveal-up delay-1" role="listitem">
+        <img src="1686542428516.jpg" alt="Gold nail art" loading="lazy" />
+        <figcaption class="masonry-overlay"><span>24K Gold Edition</span></figcaption>
+      </figure>
+      <figure class="masonry-item reveal-up delay-3" role="listitem">
+        <img src="1686542376350.jpg" alt="Nail art close-up" loading="lazy" />
+        <figcaption class="masonry-overlay"><span>Floral Couture</span></figcaption>
+      </figure>
+      <figure class="masonry-item reveal-up" role="listitem">
+        <img src="1686542376325.jpg" alt="Premium nail finish" loading="lazy" />
+        <figcaption class="masonry-overlay"><span>Chrome Mirror</span></figcaption>
+      </figure>
+      <figure class="masonry-item tall reveal-up delay-2" role="listitem">
+        <img src="1686542471269.jpg" alt="Nail design detail" loading="lazy" />
+        <figcaption class="masonry-overlay"><span>Marble Luxe</span></figcaption>
+      </figure>
+      <figure class="masonry-item reveal-up delay-1" role="listitem">
+        <img src="1686542471221.jpg" alt="Luxury nail treatment" loading="lazy" />
+        <figcaption class="masonry-overlay"><span>Ombre Dreams</span></figcaption>
+      </figure>
+      <figure class="masonry-item wide reveal-up delay-3" role="listitem">
+        <img src="1688924803812.jpg" alt="Nail spa treatment" loading="lazy" />
+        <figcaption class="masonry-overlay"><span>Spa Ritual</span></figcaption>
+      </figure>
+      <figure class="masonry-item reveal-up delay-2" role="listitem">
+        <img src="1688924803917.jpg" alt="Nail art masterpiece" loading="lazy" />
+        <figcaption class="masonry-overlay"><span>Art Couture</span></figcaption>
+      </figure>
+      <figure class="masonry-item reveal-up" role="listitem">
+        <img src="1705072266080.jpg" alt="Premium nail design" loading="lazy" />
+        <figcaption class="masonry-overlay"><span>Gold Leaf Edition</span></figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="testimonials" id="testimonials" aria-labelledby="testimonials-title">
+    <div class="testimonials-bg parallax-bg" style="background-image: url('1688924803931.jpg');" aria-hidden="true"></div>
+    <div class="testimonials-overlay" aria-hidden="true"></div>
+    <div class="testimonials-content">
+      <div class="section-header reveal-up">
+        <p class="section-eyebrow light">Lo Que Dicen</p>
+        <h2 class="section-title light" id="testimonials-title">Experiencias que<br /><em>Hablan por Sí Solas</em></h2>
+      </div>
+      <div class="testimonials-grid">
+        <blockquote class="testimonial-card reveal-up">
+          <div class="stars" aria-label="5 stars">★★★★★</div>
+          <p>"La experiencia más lujosa que he tenido en un spa de uñas. La atención al detalle es simplemente incomparable. Mis uñas lucen perfectas después de tres semanas."</p>
+          <footer><cite>— Valentina R., <span>Empresaria</span></cite></footer>
+        </blockquote>
+        <blockquote class="testimonial-card reveal-up delay-1">
+          <div class="stars" aria-label="5 stars">★★★★★</div>
+          <p>"Finalmente un lugar que entiende lo que significa el verdadero lujo. El pedicure 24K es absolutamente transformador. Ya no puedo ir a ningún otro sitio."</p>
+          <footer><cite>— Isabela M., <span>Arquitecta</span></cite></footer>
+        </blockquote>
+        <blockquote class="testimonial-card reveal-up delay-2">
+          <div class="stars" aria-label="5 stars">★★★★★</div>
+          <p>"El ambiente es de otro nivel — sofisticado, tranquilo y enormemente elegante. El gel duró 4 semanas sin una sola grieta. Una artista verdadera la que me atendió."</p>
+          <footer><cite>— Camila S., <span>Directora Creativa</span></cite></footer>
+        </blockquote>
+        <blockquote class="testimonial-card reveal-up delay-3">
+          <div class="stars" aria-label="5 stars">★★★★★</div>
+          <p>"Vine por primera vez para una boda y quedé completamente enamorada. Los diseños personalizados son verdaderas obras de arte. ¡Mi invitación de regreso ya está hecha!"</p>
+          <footer><cite>— Mariana L., <span>Médica</span></cite></footer>
+        </blockquote>
+        <blockquote class="testimonial-card reveal-up delay-2">
+          <div class="stars" aria-label="5 stars">★★★★★</div>
+          <p>"Saber que usan productos sin tóxicos hace toda la diferencia para mí. No sacrifico mi salud por la belleza — aquí no tengo que elegir. Extraordinario en todos los sentidos."</p>
+          <footer><cite>— Sofía A., <span>Nutricionista</span></cite></footer>
+        </blockquote>
+      </div>
+    </div>
+  </section>
+
+  <!-- BOOKING -->
+  <section class="booking" id="booking" aria-labelledby="booking-title">
+    <div class="booking-bg parallax-bg" style="background-image: url('1701646548593.jpg');" aria-hidden="true"></div>
+    <div class="booking-overlay" aria-hidden="true"></div>
+    <div class="booking-container">
+      <div class="booking-info reveal-left">
+        <p class="section-eyebrow light">Contáctanos</p>
+        <h2 class="section-title light" id="booking-title">Reserva Tu<br /><em>Experiencia</em></h2>
+        <p class="booking-text">Cada cita es diseñada exclusivamente para ti. Contáctanos y un miembro de nuestro equipo te atenderá personalmente.</p>
+        <ul class="contact-list" role="list">
+          <li>
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M10 1C6.1 1 3 4.1 3 8C3 13.3 10 19 10 19C10 19 17 13.3 17 8C17 4.1 13.9 1 10 1ZM10 10.5C8.6 10.5 7.5 9.4 7.5 8C7.5 6.6 8.6 5.5 10 5.5C11.4 5.5 12.5 6.6 12.5 8C12.5 9.4 11.4 10.5 10 10.5Z" stroke="#D4AF37" stroke-width="1.2" fill="none"/></svg>
+            <span>123 Luxury Avenue, Suite 500<br />Miami, FL 33101</span>
+          </li>
+          <li>
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 3H7L8.5 7L6.5 8.5C7.5 10.5 9.5 12.5 11.5 13.5L13 11.5L17 13V16C17 16 15 18 13 17C8 15 5 10 3 7C2 5 4 3 4 3Z" stroke="#D4AF37" stroke-width="1.2" fill="none" stroke-linejoin="round"/></svg>
+            <span>+1 (305) 555-0190</span>
+          </li>
+          <li>
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><rect x="2" y="4" width="16" height="12" rx="2" stroke="#D4AF37" stroke-width="1.2" fill="none"/><path d="M2 7L10 12L18 7" stroke="#D4AF37" stroke-width="1.2"/></svg>
+            <span>hello@goldnailsspa.com</span>
+          </li>
+          <li>
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><circle cx="10" cy="10" r="8" stroke="#D4AF37" stroke-width="1.2" fill="none"/><path d="M10 5V10L13 13" stroke="#D4AF37" stroke-width="1.2" stroke-linecap="round"/></svg>
+            <span>Lun–Sáb: 9am – 8pm<br />Dom: 10am – 6pm</span>
+          </li>
+        </ul>
+      </div>
+      <div class="booking-form-wrap reveal-right">
+        <form class="booking-form" novalidate aria-label="Booking form">
+          <div class="form-group">
+            <input type="text" id="name" name="name" required autocomplete="name" placeholder=" " />
+            <label for="name">Nombre Completo</label>
+            <span class="form-line" aria-hidden="true"></span>
+          </div>
+          <div class="form-group">
+            <input type="email" id="email" name="email" required autocomplete="email" placeholder=" " />
+            <label for="email">Correo Electrónico</label>
+            <span class="form-line" aria-hidden="true"></span>
+          </div>
+          <div class="form-group">
+            <input type="tel" id="phone" name="phone" autocomplete="tel" placeholder=" " />
+            <label for="phone">Teléfono</label>
+            <span class="form-line" aria-hidden="true"></span>
+          </div>
+          <div class="form-group">
+            <select id="service" name="service" required>
+              <option value="" disabled selected></option>
+              <option value="signature">Signature Manicure</option>
+              <option value="gel">Elite Gel System</option>
+              <option value="acrylic">Acrylic Sculpting</option>
+              <option value="pedicure">24K Gold Pedicure</option>
+              <option value="nail-art">Nail Art Couture</option>
+              <option value="spa">Spa Ritual Premium</option>
+            </select>
+            <label for="service" class="select-label">Servicio Deseado</label>
+            <span class="form-line" aria-hidden="true"></span>
+          </div>
+          <div class="form-group">
+            <input type="date" id="date" name="date" required placeholder=" " />
+            <label for="date">Fecha Preferida</label>
+            <span class="form-line" aria-hidden="true"></span>
+          </div>
+          <div class="form-group">
+            <textarea id="notes" name="notes" rows="3" placeholder=" "></textarea>
+            <label for="notes">Notas Adicionales</label>
+            <span class="form-line" aria-hidden="true"></span>
+          </div>
+          <button type="submit" class="btn btn-gold btn-full">
+            <span class="btn-text">Solicitar Reserva</span>
+          </button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer" role="contentinfo">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="#hero" class="nav-logo" aria-label="Gold Nails Spa">
+          <span class="logo-icon">
+            <svg width="24" height="24" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+              <path d="M14 2L16.8 9.2L24.5 9.2L18.3 13.8L20.6 21L14 16.8L7.4 21L9.7 13.8L3.5 9.2L11.2 9.2L14 2Z" fill="#D4AF37"/>
+            </svg>
+          </span>
+          <span class="logo-text">Gold Nails <em>Spa</em></span>
+        </a>
+        <p class="footer-tagline">El arte de la perfección,<br />en cada detalle.</p>
+        <div class="footer-social" role="list" aria-label="Social media links">
+          <a href="#" class="social-link" aria-label="Instagram" role="listitem">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+          </a>
+          <a href="#" class="social-link" aria-label="TikTok" role="listitem">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"/></svg>
+          </a>
+          <a href="#" class="social-link" aria-label="Facebook" role="listitem">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+          </a>
+          <a href="#" class="social-link" aria-label="Pinterest" role="listitem">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 2C6.5 2 2 6.5 2 12c0 4.2 2.6 7.8 6.3 9.3-.1-.8-.1-2.1.1-3l1.2-5s-.3-.6-.3-1.5c0-1.4.8-2.5 2-2.5.9 0 1.4.7 1.4 1.5 0 .9-.6 2.3-.9 3.6-.3 1.5.6 2.7 1.8 2.7 2.2 0 3.7-2.8 3.7-6.1 0-2.5-1.7-4.4-4.3-4.4-3 0-4.8 2.3-4.8 4.6 0 .8.3 1.7.7 2.2.1.1.1.2 0 .4l-.3 1c0 .2-.2.2-.3.1C6.4 14.3 5.6 12.6 5.6 11c0-3.3 2.9-7.2 8.7-7.2 4.6 0 7.7 3.3 7.7 6.8 0 4.8-2.7 8.3-6.6 8.3-1.3 0-2.6-.7-3-1.5l-.8 3.1c-.3 1-.9 2.1-1.5 2.9.6.2 1.2.3 1.9.3 5.5 0 10-4.5 10-10S17.5 2 12 2z"/></svg>
+          </a>
+        </div>
+      </div>
+      <nav class="footer-nav" aria-label="Footer navigation">
+        <div class="footer-nav-col">
+          <h4>Servicios</h4>
+          <ul role="list">
+            <li><a href="#services">Signature Manicure</a></li>
+            <li><a href="#services">Elite Gel System</a></li>
+            <li><a href="#services">Acrylic Sculpting</a></li>
+            <li><a href="#services">24K Gold Pedicure</a></li>
+            <li><a href="#services">Nail Art Couture</a></li>
+            <li><a href="#services">Spa Ritual Premium</a></li>
+          </ul>
+        </div>
+        <div class="footer-nav-col">
+          <h4>Empresa</h4>
+          <ul role="list">
+            <li><a href="#about">Nuestra Filosofía</a></li>
+            <li><a href="#gallery">Galería</a></li>
+            <li><a href="#testimonials">Reseñas</a></li>
+            <li><a href="#booking">Reservaciones</a></li>
+          </ul>
+        </div>
+        <div class="footer-nav-col">
+          <h4>Visítanos</h4>
+          <address>
+            <p>123 Luxury Avenue<br />Suite 500<br />Miami, FL 33101</p>
+            <p><a href="tel:+13055550190">+1 (305) 555-0190</a></p>
+            <p><a href="mailto:hello@goldnailsspa.com">hello@goldnailsspa.com</a></p>
+          </address>
+        </div>
+      </nav>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-legal">© <span id="current-year">2024</span> Gold Nails Spa. Todos los derechos reservados.</p>
+      <div class="footer-legal-links">
+        <a href="#">Privacidad</a>
+        <span aria-hidden="true">·</span>
+        <a href="#">Términos</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- WHATSAPP FLOATING BUTTON -->
+  <a href="https://wa.me/13055550190?text=Hola%2C%20me%20gustar%C3%ADa%20reservar%20una%20cita%20en%20Gold%20Nails%20Spa"
+     class="whatsapp-btn"
+     target="_blank"
+     rel="noopener noreferrer"
+     aria-label="Contactar por WhatsApp">
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+    </svg>
+    <span class="whatsapp-tooltip">¿Hablamos?</span>
+  </a>
+
+  <!-- TOAST -->
+  <div class="toast" id="toast" role="alert" aria-live="polite" aria-atomic="true">
+    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10L8 14L16 6" stroke="#D4AF37" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    <span>¡Solicitud enviada! Te contactaremos pronto.</span>
+  </div>
+
+  <script src="main.js"></script>
+</body>
+</html>
