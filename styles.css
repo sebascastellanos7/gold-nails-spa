@@ -1294,18 +1294,46 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 
 /* ── "Agregar" button on service cards ── */
 .sac-add-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
   margin-top: 1rem;
-  padding: 0.55rem 1.4rem;
-  font-size: 0.63rem;
+  padding: 0.6rem 1.5rem;
+  font-size: 0.7rem;
   letter-spacing: 0.16em;
   align-self: flex-start;
   transition: color 0.25s var(--ease-luxury),
               border-color 0.25s var(--ease-luxury),
+              box-shadow 0.25s var(--ease-luxury),
               transform 0.25s var(--ease-luxury);
+}
+.sac-add-btn:hover {
+  color: #ffffff !important;
+  box-shadow: 0 0 28px rgba(212,175,55,0.75), 0 8px 36px rgba(212,175,55,0.45), 0 0 0 1px rgba(212,175,55,0.4);
 }
 .sac-add-btn.added {
   border-color: var(--gold);
   color: var(--gold);
+}
+
+/* ── Basket icon inside the button ── */
+.sac-basket-icon {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+  stroke: currentColor;
+  fill: none;
+}
+.sac-add-btn:hover .sac-basket-icon {
+  animation: basketWiggle 0.45s var(--ease-luxury) both;
+}
+@keyframes basketWiggle {
+  0%   { transform: rotate(0deg) scale(1); }
+  20%  { transform: rotate(-14deg) scale(1.18); }
+  45%  { transform: rotate(10deg) scale(1.1); }
+  65%  { transform: rotate(-6deg) scale(1.05); }
+  82%  { transform: rotate(3deg) scale(1.02); }
+  100% { transform: rotate(0deg) scale(1); }
 }
 
 /* ── Body scroll lock ── */
@@ -1374,7 +1402,7 @@ body.cart-panel-open { overflow: hidden; }
   width: var(--cart-width);
   height: 100dvh;
   z-index: var(--cart-z);
-  background: var(--black-card);
+  background: #1c1c1c;
   border-left: 1px solid var(--gold-border);
   display: flex;
   flex-direction: column;
@@ -1431,12 +1459,12 @@ body.cart-panel-open { overflow: hidden; }
 }
 .cart-section-label {
   font-family: var(--font-sans);
-  font-size: 0.58rem;
+  font-size: 0.68rem;
   font-weight: 600;
-  letter-spacing: 0.22em;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
   color: var(--gold);
-  margin-bottom: 0.9rem;
+  margin-bottom: 1rem;
 }
 
 /* ── Cart Items List ── */
@@ -1444,19 +1472,23 @@ body.cart-panel-open { overflow: hidden; }
   list-style: none;
   display: flex;
   flex-direction: column;
+  gap: 0.6rem;
 }
 .cart-item {
   display: grid;
   grid-template-columns: 1fr auto;
   grid-template-rows: auto auto;
-  column-gap: 0.8rem;
-  padding: 0.9rem 0;
-  border-bottom: 1px solid #1f1f1f;
+  column-gap: 0.9rem;
+  padding: 1rem 1.1rem 0.85rem 1.2rem;
+  background: #282828;
+  border: 1px solid rgba(212,175,55,0.14);
+  border-left: 3px solid var(--gold);
+  border-radius: 14px;
+  box-shadow: 0 3px 14px rgba(0,0,0,0.38);
 }
-.cart-item:last-child { border-bottom: none; }
 .cart-item-name {
   font-family: var(--font-serif);
-  font-size: 1rem;
+  font-size: 1.08rem;
   font-weight: 500;
   color: var(--cream);
   grid-column: 1; grid-row: 1;
@@ -1464,7 +1496,7 @@ body.cart-panel-open { overflow: hidden; }
 }
 .cart-item-price {
   font-family: var(--font-serif);
-  font-size: 1rem;
+  font-size: 1.08rem;
   font-weight: 600;
   color: var(--gold);
   grid-column: 2; grid-row: 1;
@@ -1473,63 +1505,70 @@ body.cart-panel-open { overflow: hidden; }
 }
 .cart-item-duration {
   font-family: var(--font-sans);
-  font-size: 0.62rem;
-  color: var(--grey);
-  letter-spacing: 0.06em;
+  font-size: 0.72rem;
+  color: var(--grey-light);
+  letter-spacing: 0.05em;
   grid-column: 1; grid-row: 2;
-  margin-top: 0.2rem;
+  margin-top: 0.35rem;
 }
 .cart-item-actions {
   grid-column: 2; grid-row: 2;
   display: flex;
-  gap: 0.4rem;
   justify-content: flex-end;
   align-items: center;
-  margin-top: 0.3rem;
+  margin-top: 0.35rem;
 }
 .cart-item-btn {
   background: none;
-  border: 1px solid var(--gold-border);
-  color: var(--grey);
+  border: 1px solid rgba(231,76,60,0.35);
+  color: #c0392b;
   font-family: var(--font-sans);
-  font-size: 0.58rem;
+  font-size: 0.62rem;
   font-weight: 600;
   letter-spacing: 0.08em;
-  padding: 0.18rem 0.55rem;
+  padding: 0.22rem 0.65rem;
   border-radius: 999px;
   cursor: pointer;
   transition: color 0.2s, border-color 0.2s, background 0.2s;
   white-space: nowrap;
 }
-.cart-item-btn.add-btn:hover  { color: var(--gold); border-color: var(--gold); }
-.cart-item-btn.remove-btn:hover { color: #e74c3c; border-color: #e74c3c; }
+.cart-item-btn.remove-btn:hover {
+  color: #fff;
+  background: #c0392b;
+  border-color: #c0392b;
+}
 
-/* ── Totals ── */
+/* ── Totals card ── */
 .cart-totals {
   display: flex;
   justify-content: space-between;
-  align-items: flex-end;
-  padding: 1rem 0 0;
+  align-items: center;
+  margin-top: 1rem;
+  padding: 1rem 1.2rem;
+  background: rgba(212,175,55,0.07);
+  border: 1px solid rgba(212,175,55,0.28);
+  border-radius: 12px;
 }
 .cart-total-label {
   font-family: var(--font-sans);
-  font-size: 0.58rem;
-  letter-spacing: 0.14em;
-  color: var(--grey);
-  margin-bottom: 0.2rem;
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+  color: var(--grey-light);
+  text-transform: uppercase;
+  margin-bottom: 0.3rem;
 }
 .cart-total-price {
   font-family: var(--font-serif);
-  font-size: 1.55rem;
+  font-size: 1.7rem;
   font-weight: 600;
   color: var(--gold);
   line-height: 1;
 }
 .cart-total-duration {
   font-family: var(--font-sans);
-  font-size: 0.68rem;
-  color: var(--grey);
-  letter-spacing: 0.08em;
+  font-size: 0.82rem;
+  color: var(--cream);
+  letter-spacing: 0.06em;
   text-align: right;
 }
 
@@ -1661,6 +1700,10 @@ body.cart-panel-open { overflow: hidden; }
   margin-top: 0.5rem;
   display: block;
 }
+
+/* ── Ensure [hidden] wins over display:flex on overlays ── */
+.cart-loading-overlay[hidden],
+.cart-success-screen[hidden] { display: none !important; }
 
 /* ── Loading Overlay ── */
 .cart-loading-overlay {
