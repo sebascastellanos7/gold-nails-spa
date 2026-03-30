@@ -116,7 +116,8 @@
       const target = document.querySelector(this.getAttribute('href'));
       if (!target) return;
       e.preventDefault();
-      const offset = 80;
+      const navbar = document.getElementById('navbar');
+      const offset = navbar ? navbar.getBoundingClientRect().height : 80;
       const top = target.getBoundingClientRect().top + window.scrollY - offset;
       window.scrollTo({ top, behavior: 'smooth' });
     });
@@ -149,9 +150,9 @@
     form.querySelectorAll('[required]').forEach(field => {
       if (!field.value.trim()) {
         valid = false;
-        field.style.borderColor = '#c0392b';
+        field.classList.add('input-error');
         field.addEventListener('input', () => {
-          field.style.borderColor = '';
+          field.classList.remove('input-error');
         }, { once: true });
       }
     });

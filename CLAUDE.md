@@ -26,7 +26,8 @@ Multi-page luxury nail spa website. Pure vanilla HTML/CSS/JS — no build tools,
 --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1)
 --section-pad: clamp(80px, 10vw, 140px)
 --container: 1240px
---cart-width: 420px
+--side-pad: clamp(1rem, 5vw, 2rem)
+--cart-width: min(420px, 92vw)
 ```
 
 ## index.html Sections (in order)
@@ -63,7 +64,7 @@ Full e-commerce UI built in CSS/JS:
 | `initReveal()` | IntersectionObserver → adds `.visible` to `.reveal-up/left/right` |
 | `initParallax()` | `translateY` ±40px on `.parallax-bg`, respects `prefers-reduced-motion` |
 | `initActiveLink()` | gold nav links via IntersectionObserver on `section[id]` |
-| `initSmoothScroll()` | smooth scroll with 80px navbar offset |
+| `initSmoothScroll()` | smooth scroll with dynamic navbar height offset |
 | `initForm()` | floating label date fix, field validation, 1.4s simulated submit, toast |
 | `updateYear()` | sets `#current-year` to current year |
 | `initServiceCards()` | Enter/Space keyboard access on `.service-card[tabindex="0"]` |
@@ -76,11 +77,13 @@ Full e-commerce UI built in CSS/JS:
 19 services from 10,000 COP (Cambio de Esmalte) to 125,000 COP (Acrílicas esculpidas con molde). Keywords (`claves`) suggest chatbot/search integration.
 
 ## Responsive Breakpoints
-- **1100px** — 2-col grids
-- **900px** — stack to 1 col, reduce masonry columns
-- **768px** — hide nav links, show hamburger
-- **560px** — services grid 1-col
-- **480px** — 1-col masonry, cart panel full-width
+- **1100px** — 2-col grids (services, testimonials), masonry 3-col
+- **1024px** — tablet landscape: tighter gaps for booking/about containers
+- **900px** — stack to 1 col, reduce masonry to 2-col
+- **768px** — hide nav links, show hamburger; cart panel width `min(380px, 88vw)`
+- **540px** — tighter nav/hero padding, footer-bottom stacks vertically
+- **480px** — hero actions stack, booking form tighter padding; cart panel full-width
+- **360px** — masonry collapses to 1 col (only on very narrow screens)
 
 ## No Build Process
 No compilation, bundling, or transpilation. Edit files directly and refresh browser.

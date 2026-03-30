@@ -956,8 +956,8 @@
 
       /* ── Highlight invalid input ── */
       function highlightError(input) {
-        input.style.borderColor = '#e74c3c';
-        input.addEventListener('input', () => { input.style.borderColor = ''; }, { once: true });
+        input.classList.add('input-error');
+        input.addEventListener('input', () => { input.classList.remove('input-error'); }, { once: true });
       }
 
       /* ── Webhook 1: Search available slots ── */
@@ -1006,8 +1006,8 @@
         if (!state.selectedTime) {
           // Flash timeslots section if it's visible
           if (!dom.timeslots.hidden) {
-            dom.timeslotsGrid.style.outline = '1px solid #e74c3c';
-            setTimeout(() => { dom.timeslotsGrid.style.outline = ''; }, 2000);
+            dom.timeslotsGrid.classList.add('grid-error');
+            setTimeout(() => { dom.timeslotsGrid.classList.remove('grid-error'); }, 2000);
           }
           valid = false;
         }
@@ -1077,6 +1077,7 @@
       }
 
       function launchFireworks() {
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
         var canvas = document.getElementById('cartFireworksCanvas');
         var ctx = canvas.getContext('2d');
         var parent = canvas.parentElement;
