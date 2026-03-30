@@ -33,15 +33,30 @@
         <span></span><span></span><span></span>
       </button>
     </div>
-    <div class="mobile-menu" id="mobile-menu" role="dialog" aria-label="Mobile navigation">
+    <div class="mobile-backdrop" id="mobile-backdrop" aria-hidden="true"></div>
+    <div class="mobile-menu" id="mobile-menu" role="dialog" aria-modal="true" aria-label="Menú de navegación">
+      <div class="mobile-menu-header">
+        <span class="mobile-menu-brand">Gold Nails <em>Spa</em></span>
+        <button class="mobile-menu-close" id="mobile-menu-close" aria-label="Cerrar menú">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <line x1="1" y1="1" x2="15" y2="15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            <line x1="15" y1="1" x2="1" y2="15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </button>
+      </div>
       <ul role="list">
         <li><a href="#about">Filosofía</a></li>
         <li><a href="services.html">Servicios</a></li>
         <li><a href="#gallery">Galería</a></li>
         <li><a href="#testimonials">Reseñas</a></li>
         <li><a href="#ubicacion">Ubicación</a></li>
-        <li><a href="services.html">Reservar</a></li>
       </ul>
+      <div class="mobile-menu-cta">
+        <a href="services.html" class="btn btn-gold btn-full">Reservar Ahora</a>
+      </div>
+      <div class="mobile-menu-footer">
+        <p>Gold Nails Spa · Medellín, Colombia</p>
+      </div>
     </div>
   </nav>
 

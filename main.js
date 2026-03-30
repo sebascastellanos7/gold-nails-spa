@@ -21,19 +21,27 @@
 (function initMobileMenu() {
   const hamburger  = document.getElementById('hamburger');
   const mobileMenu = document.getElementById('mobile-menu');
+  const backdrop   = document.getElementById('mobile-backdrop');
+  const closeBtn   = document.getElementById('mobile-menu-close');
   if (!hamburger || !mobileMenu) return;
 
   const toggle = (open) => {
     hamburger.classList.toggle('open', open);
     mobileMenu.classList.toggle('open', open);
     hamburger.setAttribute('aria-expanded', String(open));
+    if (backdrop) backdrop.classList.toggle('open', open);
     document.body.style.overflow = open ? 'hidden' : '';
   };
 
   hamburger.addEventListener('click', () => {
-    const isOpen = hamburger.classList.contains('open');
-    toggle(!isOpen);
+    toggle(!hamburger.classList.contains('open'));
   });
+
+  // Close button inside drawer
+  if (closeBtn) closeBtn.addEventListener('click', () => toggle(false));
+
+  // Close on backdrop click
+  if (backdrop) backdrop.addEventListener('click', () => toggle(false));
 
   // Close on link click
   mobileMenu.querySelectorAll('a').forEach(link => {
