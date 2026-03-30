@@ -178,7 +178,7 @@
         <li><a href="index.html#services">Servicios</a></li>
         <li><a href="index.html#gallery">Galería</a></li>
         <li><a href="index.html#testimonials">Reseñas</a></li>
-        <li><a href="index.html#booking" class="nav-cta">Reservar</a></li>
+        <li><a href="index.html#ubicacion">Ubicación</a></li>
       </ul>
       <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobile-menu">
         <span></span><span></span><span></span>
@@ -190,7 +190,7 @@
         <li><a href="index.html#services">Servicios</a></li>
         <li><a href="index.html#gallery">Galería</a></li>
         <li><a href="index.html#testimonials">Reseñas</a></li>
-        <li><a href="index.html#booking">Reservar</a></li>
+        <li><a href="index.html#ubicacion">Ubicación</a></li>
       </ul>
     </div>
   </nav>
@@ -504,12 +504,6 @@
       </div>
     </div>
 
-    <!-- CTA -->
-    <div class="services-page-cta">
-      <p>¿Lista para tu próxima cita?</p>
-      <a href="index.html#booking" class="btn btn-gold">Reserva Tu Cita</a>
-    </div>
-
   </main>
 
   <!-- FOOTER -->
@@ -524,13 +518,10 @@
         </a>
         <p class="footer-tagline">El arte de la perfección,<br />en cada detalle.</p>
         <div class="footer-social" role="list" aria-label="Social media links">
-          <a href="#" class="social-link" aria-label="Instagram" role="listitem">
+          <a href="https://www.instagram.com/goldnailspa/" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Instagram" role="listitem">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
           </a>
-          <a href="#" class="social-link" aria-label="TikTok" role="listitem">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"/></svg>
-          </a>
-          <a href="#" class="social-link" aria-label="Facebook" role="listitem">
+          <a href="https://www.facebook.com/goldnailspa" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Facebook" role="listitem">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
           </a>
         </div>
@@ -539,11 +530,12 @@
         <div class="footer-nav-col">
           <h4>Servicios</h4>
           <ul role="list">
-            <li><a href="#manos">Manos</a></li>
-            <li><a href="#pies">Pies</a></li>
-            <li><a href="#acrilicas">Acrílicas</a></li>
-            <li><a href="#softgel">Soft Gel</a></li>
-            <li><a href="#retiros">Retiros</a></li>
+            <li><a href="services.html">Manos Tradicionales</a></li>
+            <li><a href="services.html">Pies Tradicionales</a></li>
+            <li><a href="services.html">Manos Semipermanente</a></li>
+            <li><a href="services.html">Soft gel - Press On</a></li>
+            <li><a href="services.html">Acrílicas esculpidas con molde</a></li>
+            <li><a href="services.html">Técnica Dipping</a></li>
           </ul>
         </div>
         <div class="footer-nav-col">
@@ -552,15 +544,15 @@
             <li><a href="index.html#about">Nuestra Filosofía</a></li>
             <li><a href="index.html#gallery">Galería</a></li>
             <li><a href="index.html#testimonials">Reseñas</a></li>
-            <li><a href="index.html#booking">Reservaciones</a></li>
+            <li><a href="services.html">Reservaciones</a></li>
           </ul>
         </div>
         <div class="footer-nav-col">
           <h4>Visítanos</h4>
           <address>
-            <p>123 Luxury Avenue<br />Suite 500<br />Miami, FL 33101</p>
-            <p><a href="tel:+13055550190">+1 (305) 555-0190</a></p>
-            <p><a href="mailto:hello@goldnailsspa.com">hello@goldnailsspa.com</a></p>
+            <p>Edificio Santa Elena<br />Cra 4 #39-171, Locales 17 y 18<br />Ibagué, Tolima</p>
+            <p><a href="tel:+573106160103">310 616 0103</a></p>
+            <p><a href="mailto:goldnailspa1@gmail.com">goldnailspa1@gmail.com</a></p>
           </address>
         </div>
       </nav>
@@ -614,7 +606,7 @@
           <span class="form-line" aria-hidden="true"></span>
         </div>
         <button class="btn btn-outline btn-full cart-search-btn" id="cartSearchBtn" disabled aria-label="Buscar horarios disponibles">
-          <span class="btn-text" id="cartSearchBtnText">Búsqueda inteligente de espacios</span>
+          <span class="btn-text" id="cartSearchBtnText">Buscar horas disponibles</span>
         </button>
         <span class="cart-inline-error" id="cartSearchError" hidden></span>
         <div class="cart-timeslots" id="cartTimeslots" hidden>
@@ -674,6 +666,7 @@
 
     <!-- Success screen -->
     <div class="cart-success-screen" id="cartSuccessScreen" hidden>
+      <canvas class="cart-fireworks-canvas" id="cartFireworksCanvas" aria-hidden="true"></canvas>
       <div class="cart-success-inner">
         <div class="cart-success-icon" aria-hidden="true">
           <svg width="56" height="56" viewBox="0 0 56 56" fill="none" stroke="var(--gold)" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
@@ -681,10 +674,10 @@
             <path d="M17 28l8 8 14-16"/>
           </svg>
         </div>
-        <p class="section-eyebrow" style="margin:0 0 0.6rem;font-size:0.58rem">Reserva Confirmada</p>
+        <p class="section-eyebrow" style="margin:0 0 0.6rem;font-size:0.65rem">Reserva Confirmada</p>
         <h2 class="cart-success-title">¡Nos vemos pronto!</h2>
         <p class="cart-success-msg" id="cartSuccessMsg">Tu cita ha sido agendada. Te enviaremos la confirmación a tu WhatsApp.</p>
-        <button class="btn btn-ghost" id="cartSuccessClose">Volver a servicios</button>
+        <a href="index.html" class="btn btn-ghost cart-success-btn" id="cartSuccessClose">Volver</a>
       </div>
     </div>
 
@@ -729,9 +722,9 @@
     (function initCart() {
       'use strict';
 
-      /* ── Webhook URLs — replace with real n8n endpoints ── */
-      const URL_N8N_BUSQUEDA = 'URL_N8N_BUSQUEDA';
-      const URL_N8N_AGENDAR  = 'URL_N8N_AGENDAR';
+      /* ── Webhook URLs — n8n production endpoints ── */
+      const URL_N8N_BUSQUEDA = 'https://n8n-production-5920.up.railway.app/webhook/busqueda-horarios';
+      const URL_N8N_AGENDAR  = 'https://n8n-production-5920.up.railway.app/webhook/agendar-cita';
 
       /* ── State ── */
       const state = {
@@ -1000,7 +993,7 @@
           showError(dom.searchError, 'No se pudo conectar. Verifica tu conexión e intenta de nuevo.');
         } finally {
           state.searching = false;
-          dom.searchBtnText.textContent = 'Búsqueda inteligente de espacios';
+          dom.searchBtnText.textContent = 'Buscar horas disponibles';
           dom.searchBtn.disabled = false;
         }
       }
@@ -1080,6 +1073,74 @@
         dom.successMsg.textContent =
           'Tu cita ha sido agendada, ' + nombre + '. Te enviaremos la confirmación a tu WhatsApp.';
         dom.successScreen.hidden = false;
+        launchFireworks();
+      }
+
+      function launchFireworks() {
+        var canvas = document.getElementById('cartFireworksCanvas');
+        var ctx = canvas.getContext('2d');
+        var parent = canvas.parentElement;
+        canvas.width  = parent.offsetWidth;
+        canvas.height = parent.offsetHeight;
+        var W = canvas.width, H = canvas.height;
+        var particles = [];
+        var colors = ['#D4AF37','#E8C84A','#FAF9F6','#f0d060','#ffffff','#D4AF3799'];
+        var startTime = Date.now();
+        var DURATION = 4500;
+        var animId;
+
+        function Particle(x, y) {
+          this.x = x; this.y = y;
+          this.color = colors[Math.floor(Math.random() * colors.length)];
+          var angle = Math.random() * Math.PI * 2;
+          var spd   = Math.random() * 5 + 1.5;
+          this.vx = Math.cos(angle) * spd;
+          this.vy = Math.sin(angle) * spd;
+          this.alpha = 1;
+          this.decay  = Math.random() * 0.012 + 0.01;
+          this.size   = Math.random() * 2.5 + 1;
+        }
+        Particle.prototype.tick = function() {
+          this.vx *= 0.97; this.vy *= 0.97;
+          this.vy += 0.07;
+          this.x += this.vx; this.y += this.vy;
+          this.alpha -= this.decay;
+        };
+
+        function burst(x, y, count) {
+          count = count || 55;
+          for (var i = 0; i < count; i++) particles.push(new Particle(x, y));
+        }
+
+        /* opening volley */
+        burst(W * 0.25, H * 0.28);
+        burst(W * 0.75, H * 0.22);
+        burst(W * 0.50, H * 0.35);
+
+        var iv = setInterval(function() {
+          if (Date.now() - startTime > DURATION) { clearInterval(iv); return; }
+          burst(Math.random() * W * 0.7 + W * 0.15, Math.random() * H * 0.45 + H * 0.05);
+        }, 550);
+
+        function draw() {
+          ctx.clearRect(0, 0, W, H);
+          particles = particles.filter(function(p) { return p.alpha > 0; });
+          particles.forEach(function(p) {
+            p.tick();
+            ctx.globalAlpha = Math.max(0, p.alpha);
+            ctx.fillStyle   = p.color;
+            ctx.beginPath();
+            ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+            ctx.fill();
+          });
+          ctx.globalAlpha = 1;
+          if (Date.now() - startTime < DURATION + 1500 || particles.length) {
+            animId = requestAnimationFrame(draw);
+          } else {
+            cancelAnimationFrame(animId);
+          }
+        }
+        draw();
       }
 
       /* ── Reset everything ── */
@@ -1147,8 +1208,7 @@
       /* Confirm button */
       dom.confirmBtn.addEventListener('click', handleConfirm);
 
-      /* Success close */
-      dom.successClose.addEventListener('click', resetCart);
+      /* Success close — now an <a href="index.html">, no JS needed */
 
       /* ESC key closes panel */
       document.addEventListener('keydown', function(e) {
