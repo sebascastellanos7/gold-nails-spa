@@ -114,7 +114,7 @@
             '<p class="gns-eyebrow">Gold Nails Spa</p>',
             '<h2 class="gns-title" id="gnsModalTitle">Juega y <em>Gana</em></h2>',
             '<div class="gns-intro-icons" aria-hidden="true">💅 🌸 ✨ 🧴 ❤️</div>',
-            '<p class="gns-subtitle">Encuentra los 4 pares en <strong>20 segundos</strong><br>y obtén <strong>$5,000 COP de descuento</strong> en tu reserva.</p>',
+            '<p class="gns-subtitle">Encuentra los 5 pares en <strong>20 segundos</strong><br>y obtén <strong>$5,000 COP de descuento</strong> en tu reserva.</p>',
             '<button class="gns-btn-primary" id="gnsBtnStart" type="button">Empezar a Jugar</button>',
           '</div>',
 
