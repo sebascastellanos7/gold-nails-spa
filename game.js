@@ -14,9 +14,10 @@
   var VOUCHER_AMOUNT   = 5000;
   var VOUCHER_DURATION = 15 * 60 * 1000;   // 15 min ms
   var TIMER_SECONDS    = 20;
-  var SYMBOLS          = ['💅','💅','🌸','🌸','✨','✨','🧴','🧴'];
+  var SYMBOLS          = ['💅','💅','🌸','🌸','✨','✨','🧴','🧴','❤️','❤️'];
   var URGENT_THRESHOLD = 5 * 60 * 1000;    // 5 min ms → FOMO
   var URGENT_GAME_SEC  = 5;                // game timer turns red
+  var TICK_START_SEC   = 10;               // ticking sound starts at 10s remaining
 
   /* ─────────────────────────────────────────────
      VOUCHER STORAGE
@@ -264,6 +265,113 @@
   }
 
   /* ─────────────────────────────────────────────
+     AUDIO  (Web Audio API — no external files)
+  ───────────────────────────────────────────── */
+  var _audioCtx = null;
+
+  function getAudioCtx() {
+    if (typeof AudioContext === 'undefined' && typeof webkitAudioContext === 'undefined') return null;
+    if (!_audioCtx) {
+      try { _audioCtx = new (window.AudioContext || window.webkitAudioContext)(); } catch(e) { return null; }
+    }
+    if (_audioCtx.state === 'suspended') _audioCtx.resume();
+    return _audioCtx;
+  }
+
+  // Soft card-snap: filtered noise burst + short pitch sweep
+  function playFlipSound() {
+    var ctx = getAudioCtx(); if (!ctx) return;
+    var now = ctx.currentTime;
+
+    // Noise layer
+    var buf = ctx.createBuffer(1, Math.floor(ctx.sampleRate * 0.07), ctx.sampleRate);
+    var d   = buf.getChannelData(0);
+    for (var i = 0; i < d.length; i++) d[i] = (Math.random() * 2 - 1) * Math.pow(1 - i / d.length, 1.8);
+    var ns  = ctx.createBufferSource();
+    ns.buffer = buf;
+    var bp  = ctx.createBiquadFilter();
+    bp.type = 'bandpass'; bp.frequency.value = 1800; bp.Q.value = 1.2;
+    var ng  = ctx.createGain();
+    ng.gain.setValueAtTime(0.22, now);
+    ng.gain.exponentialRampToValueAtTime(0.001, now + 0.07);
+    ns.connect(bp); bp.connect(ng); ng.connect(ctx.destination);
+    ns.start(now);
+
+    // Pitch sweep layer
+    var osc = ctx.createOscillator();
+    var og  = ctx.createGain();
+    osc.type = 'triangle';
+    osc.frequency.setValueAtTime(520, now);
+    osc.frequency.exponentialRampToValueAtTime(180, now + 0.09);
+    og.gain.setValueAtTime(0.10, now);
+    og.gain.exponentialRampToValueAtTime(0.001, now + 0.09);
+    osc.connect(og); og.connect(ctx.destination);
+    osc.start(now); osc.stop(now + 0.09);
+  }
+
+  // Two ascending chime notes on a match
+  function playMatchSound() {
+    var ctx = getAudioCtx(); if (!ctx) return;
+    [523.25, 783.99].forEach(function(freq, i) {
+      var osc = ctx.createOscillator();
+      var g   = ctx.createGain();
+      osc.type = 'sine'; osc.frequency.value = freq;
+      var t = ctx.currentTime + i * 0.13;
+      g.gain.setValueAtTime(0.0, t);
+      g.gain.linearRampToValueAtTime(0.22, t + 0.01);
+      g.gain.exponentialRampToValueAtTime(0.001, t + 0.42);
+      osc.connect(g); g.connect(ctx.destination);
+      osc.start(t); osc.stop(t + 0.42);
+    });
+  }
+
+  // Sharp metronome click — louder + higher when urgent
+  function playTickSound(urgent) {
+    var ctx = getAudioCtx(); if (!ctx) return;
+    var now = ctx.currentTime;
+    var osc = ctx.createOscillator();
+    var g   = ctx.createGain();
+    osc.type = 'square';
+    osc.frequency.value = urgent ? 1400 : 900;
+    g.gain.setValueAtTime(urgent ? 0.20 : 0.09, now);
+    g.gain.exponentialRampToValueAtTime(0.001, now + 0.055);
+    osc.connect(g); g.connect(ctx.destination);
+    osc.start(now); osc.stop(now + 0.055);
+  }
+
+  // Celebratory ascending arpeggio (C5-E5-G5-C6)
+  function playWinSound() {
+    var ctx = getAudioCtx(); if (!ctx) return;
+    [523.25, 659.25, 783.99, 1046.50].forEach(function(freq, i) {
+      var osc = ctx.createOscillator();
+      var g   = ctx.createGain();
+      osc.type = 'sine'; osc.frequency.value = freq;
+      var t = ctx.currentTime + i * 0.11;
+      g.gain.setValueAtTime(0.0, t);
+      g.gain.linearRampToValueAtTime(0.20, t + 0.01);
+      g.gain.exponentialRampToValueAtTime(0.001, t + 0.50);
+      osc.connect(g); g.connect(ctx.destination);
+      osc.start(t); osc.stop(t + 0.50);
+    });
+  }
+
+  // Descending "wah-wah" on lose
+  function playLoseSound() {
+    var ctx = getAudioCtx(); if (!ctx) return;
+    [392.00, 349.23, 311.13, 277.18].forEach(function(freq, i) {
+      var osc = ctx.createOscillator();
+      var g   = ctx.createGain();
+      osc.type = 'sawtooth'; osc.frequency.value = freq;
+      var t = ctx.currentTime + i * 0.18;
+      g.gain.setValueAtTime(0.0, t);
+      g.gain.linearRampToValueAtTime(0.15, t + 0.02);
+      g.gain.exponentialRampToValueAtTime(0.001, t + 0.30);
+      osc.connect(g); g.connect(ctx.destination);
+      osc.start(t); osc.stop(t + 0.30);
+    });
+  }
+
+  /* ─────────────────────────────────────────────
      GAME LOGIC
   ───────────────────────────────────────────── */
   function shuffle(arr) {
@@ -313,6 +421,9 @@
   function tickGameTimer() {
     state.timerSec--;
     updateTimerDisplay();
+    if (state.timerSec <= TICK_START_SEC) {
+      playTickSound(state.timerSec <= URGENT_GAME_SEC);
+    }
     if (state.timerSec <= URGENT_GAME_SEC) {
       el.timer.classList.add('gns-timer--urgent');
     }
@@ -350,6 +461,7 @@
   function flipCard(card) {
     card.classList.add('gns-flipped');
     card.setAttribute('aria-pressed', 'true');
+    playFlipSound();
   }
 
   function checkMatch() {
@@ -368,7 +480,8 @@
     state.matched++;
     state.flipped   = [];
     state.lockBoard = false;
-    if (state.matched === 4) triggerWin();
+    playMatchSound();
+    if (state.matched === 5) triggerWin();
   }
 
   function unflipCards(a, b) {
@@ -383,6 +496,7 @@
   function triggerWin() {
     stopGameTimer();
     state.phase = 'won';
+    playWinSound();
     setVoucher();
     // Update FAB visuals to indicate active voucher
     el.fab.classList.add('gns-fab--active');
@@ -393,6 +507,7 @@
   function triggerLose() {
     state.phase     = 'lost';
     state.lockBoard = true;
+    playLoseSound();
     showScreen('lose');
   }
 

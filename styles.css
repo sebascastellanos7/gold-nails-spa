@@ -2363,8 +2363,8 @@ body.cart-panel-open { overflow: hidden; }
 /* ── Memory board ── */
 .gns-board {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: clamp(0.5rem, 2vw, 0.85rem);
+  grid-template-columns: repeat(5, 1fr);
+  gap: clamp(0.4rem, 1.6vw, 0.75rem);
   width: 100%;
 }
 
@@ -2574,5 +2574,5 @@ body.cart-panel-open { overflow: hidden; }
   .gns-fab--above-cart  { bottom: 5.2rem; right: 1rem; }
   .gns-modal-box        { padding: 2.2rem 1.4rem 1.8rem; }
   .gns-board            { gap: 0.45rem; }
-  .gns-card             { min-width: 56px; min-height: 56px; border-radius: 10px; }
+  .gns-card             { min-width: 44px; min-height: 44px; border-radius: 10px; }
 }
