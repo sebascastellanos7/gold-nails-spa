@@ -2562,10 +2562,16 @@ body.cart-panel-open { overflow: hidden; }
 
 /* ── Mobile adjustments ── */
 @media (max-width: 480px) {
-  /* WS FAB has no mobile override (stays at right: 2.2rem), so we match it exactly */
-  .gns-fab              { bottom: 7.5rem; right: 2.2rem; }
-  /* On mobile, cart FAB moves to bottom: 1.4rem — recalculate: 1.4 + 3.5rem + 1.6rem gap */
-  .gns-fab--above-cart  { bottom: 6.5rem; right: 1.4rem; } /* match cart FAB mobile position */
+  /* Shrink both floating buttons to 46px on mobile */
+  .whatsapp-btn         { width: 46px; height: 46px; bottom: 1.6rem; right: 1.6rem; }
+  .whatsapp-btn svg     { width: 22px; height: 22px; }
+  .cart-fab             { width: 46px; height: 46px; bottom: 1rem; right: 1rem; }
+  .cart-fab svg         { width: 18px; height: 18px; }
+  /* Game FAB: same size, repositioned above WA / cart with tighter gaps */
+  .gns-fab              { width: 46px; height: 46px; bottom: 5.8rem; right: 1.6rem; }
+  .gns-fab svg          { width: 20px; height: 20px; }
+  .gns-fab-label        { font-size: 0.38rem; }
+  .gns-fab--above-cart  { bottom: 5.2rem; right: 1rem; }
   .gns-modal-box        { padding: 2.2rem 1.4rem 1.8rem; }
   .gns-board            { gap: 0.45rem; }
   .gns-card             { min-width: 56px; min-height: 56px; border-radius: 10px; }
