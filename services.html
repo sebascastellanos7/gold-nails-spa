@@ -700,6 +700,9 @@
   <!-- Backdrop -->
   <div class="cart-backdrop" id="cartBackdrop" hidden aria-hidden="true"></div>
 
+  <!-- Juega y Gana: must load before initCart so window.GNSVoucher is available -->
+  <script src="game.js"></script>
+
   <script>
     /* ── Hamburger menu ── */
     (function() {
@@ -812,16 +815,57 @@
           </li>
         `).join('');
 
-        dom.totals.innerHTML = `
-          <div>
-            <p class="cart-total-label">Total a pagar</p>
-            <p class="cart-total-price">${formatCOP(getTotalPrice())}</p>
-          </div>
-          <div style="text-align:right">
-            <p class="cart-total-label">Duración total</p>
-            <p class="cart-total-duration">${formatDur(getTotalDuration())}</p>
-          </div>
-        `;
+        const subtotal   = getTotalPrice();
+        const hasVoucher = window.GNSVoucher && window.GNSVoucher.isValid();
+        const discount   = hasVoucher ? window.GNSVoucher.AMOUNT : 0;
+        const finalTotal = subtotal - discount;
+
+        if (hasVoucher) {
+          const remaining = window.GNSVoucher.getExpiry() - Date.now();
+          const urgent    = remaining <= 5 * 60 * 1000;
+          const fmtTime   = window.GNSVoucher.formatCountdown(remaining);
+          dom.totals.innerHTML = `
+            <div style="width:100%">
+              <div style="display:flex;justify-content:space-between;align-items:center">
+                <div>
+                  <p class="cart-total-label">Subtotal</p>
+                  <p class="cart-total-price" style="font-size:1.1rem;color:var(--cream-dim)">${formatCOP(subtotal)}</p>
+                </div>
+                <div style="text-align:right">
+                  <p class="cart-total-label">Duración total</p>
+                  <p class="cart-total-duration">${formatDur(getTotalDuration())}</p>
+                </div>
+              </div>
+              <div class="gns-cart-voucher-block">
+                <div class="gns-cart-discount-row">
+                  <span class="gns-cart-discount-label">🎮 Bono Juega y Gana</span>
+                  <span class="gns-cart-discount-amount">−${formatCOP(discount)}</span>
+                </div>
+                <div class="gns-cart-final-row">
+                  <div>
+                    <p class="cart-total-label">Total a pagar</p>
+                    <p class="cart-total-price">${formatCOP(finalTotal)}</p>
+                  </div>
+                  <div style="text-align:right">
+                    <p class="cart-total-label">Bono expira en</p>
+                    <p class="gns-cart-countdown${urgent ? ' gns-urgent' : ''}" id="cartVoucherCountdown">${fmtTime}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          `;
+        } else {
+          dom.totals.innerHTML = `
+            <div>
+              <p class="cart-total-label">Total a pagar</p>
+              <p class="cart-total-price">${formatCOP(subtotal)}</p>
+            </div>
+            <div style="text-align:right">
+              <p class="cart-total-label">Duración total</p>
+              <p class="cart-total-duration">${formatDur(getTotalDuration())}</p>
+            </div>
+          `;
+        }
       }
 
       /* ── Render time slots ── */
@@ -1047,6 +1091,11 @@
         dom.confirmBtn.disabled = true;
         showLoading('Confirmando tu cita...');
 
+        // Final voucher re-validation at submit time
+        const voucherValid    = window.GNSVoucher && window.GNSVoucher.isValid();
+        const voucherDiscount = voucherValid ? window.GNSVoucher.AMOUNT : 0;
+        const finalPrice      = getTotalPrice() - voucherDiscount;
+
         const pago = document.querySelector('input[name="cartPago"]:checked');
         const payload = {
           client: {
@@ -1059,9 +1108,16 @@
             date:                   state.selectedDate,
             time:                   state.selectedTime,
             total_duration_minutes: getTotalDuration(),
-            total_price:            getTotalPrice()
+            total_price:            finalPrice
           },
-          services: state.items.map(i => ({ name: i.nombre, price: i.precio }))
+          services: state.items.map(i => ({ name: i.nombre, price: i.precio })),
+          ...(voucherValid && {
+            voucher: {
+              type:           'juega_y_gana',
+              discount:       voucherDiscount,
+              original_price: getTotalPrice()
+            }
+          })
         };
 
         try {
@@ -1073,6 +1129,8 @@
           if (!res.ok) throw new Error('HTTP ' + res.status);
           hideLoading();
           showSuccess(payload.client.name);
+          // Consume the voucher on successful booking
+          if (voucherValid && window.GNSVoucher) window.GNSVoucher.clear();
         } catch (err) {
           hideLoading();
           showError(dom.confirmError, 'No se pudo confirmar la cita. Intenta de nuevo o contáctanos por WhatsApp.');
@@ -1229,6 +1287,10 @@
       document.addEventListener('keydown', function(e) {
         if (e.key === 'Escape' && dom.panel.classList.contains('cart-open')) closePanel();
       });
+
+      /* Re-render cart totals when voucher is claimed or cleared */
+      document.addEventListener('gns:voucher-claimed', function() { renderItems(); });
+      document.addEventListener('gns:voucher-cleared', function() { renderItems(); });
 
     })(); /* end initCart */
   </script>

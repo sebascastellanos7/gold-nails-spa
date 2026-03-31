@@ -2074,3 +2074,499 @@ body.cart-panel-open { overflow: hidden; }
   }
   .cart-fab { bottom: 1.4rem; right: 1.4rem; }
 }
+
+
+/* ═══════════════════════════════════════════════════
+   JUEGA Y GANA — GAME SYSTEM
+═══════════════════════════════════════════════════ */
+
+/* ── Animations ── */
+@keyframes gnsPulse {
+  0%   { box-shadow: 0 0 0 0    rgba(212,175,55,0.60); }
+  60%  { box-shadow: 0 0 0 16px rgba(212,175,55,0);    }
+  100% { box-shadow: 0 0 0 0    rgba(212,175,55,0);    }
+}
+@keyframes gnsTimerPulse {
+  0%, 100% { opacity: 1;    }
+  50%      { opacity: 0.45; }
+}
+@keyframes gnsPop {
+  0%   { transform: scale(0.85); opacity: 0; }
+  60%  { transform: scale(1.04);             }
+  100% { transform: scale(1);    opacity: 1; }
+}
+@keyframes gnsSlideUp {
+  from { transform: translateY(24px); opacity: 0; }
+  to   { transform: translateY(0);    opacity: 1; }
+}
+
+/* ── Game FAB ── */
+.gns-fab {
+  position: fixed;
+  bottom: 7.5rem;   /* above WhatsApp FAB (2.2rem + 58px ≈ 5.8rem top edge + 1.7rem gap) */
+  right: 2.2rem;    /* always aligned with WhatsApp FAB */
+  z-index: 950;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--black-card);
+  border: 1.5px solid var(--gold);
+  color: var(--gold);
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.45);
+  transition: transform 0.35s var(--ease-spring), box-shadow 0.35s, border-color 0.35s;
+  outline-offset: 3px;
+}
+.gns-fab-label {
+  font-family: var(--font-sans);
+  font-size: 0.42rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--gold);
+  line-height: 1;
+  margin-top: 3px;
+}
+.gns-fab:hover {
+  transform: scale(1.1) translateY(-2px);
+  box-shadow: 0 8px 32px rgba(212,175,55,0.45);
+}
+.gns-fab--above-cart {
+  bottom: 11rem;    /* above cart FAB (5.8rem + 56px ≈ 9.3rem top edge + 1.7rem gap) */
+}
+.gns-fab--active {
+  border-color: var(--gold-light);
+  background: rgba(212,175,55,0.12);
+}
+
+/* Pulse ring: only when no active voucher and motion allowed */
+@media (prefers-reduced-motion: no-preference) {
+  .gns-fab:not(.gns-fab--active) {
+    animation: gnsPulse 2.4s var(--ease-luxury) infinite;
+  }
+}
+
+/* Tooltip */
+.gns-fab-tooltip {
+  position: absolute;
+  right: calc(100% + 12px);
+  top: 50%;
+  transform: translateY(-50%) translateX(6px);
+  background: var(--cream);
+  color: var(--black);
+  font-family: var(--font-sans);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  padding: 0.4rem 0.9rem;
+  border-radius: 999px;
+  white-space: nowrap;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.22);
+  opacity: 0;
+  transition: opacity 0.3s, transform 0.3s var(--ease-luxury);
+  pointer-events: none;
+}
+.gns-fab:hover .gns-fab-tooltip,
+.gns-fab:focus-visible .gns-fab-tooltip {
+  opacity: 1;
+  transform: translateY(-50%) translateX(0);
+}
+
+/* ── Modal overlay ── */
+.gns-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.35s var(--ease-luxury);
+  pointer-events: none;
+}
+.gns-modal[hidden] { display: none; }
+.gns-modal.gns-visible {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.gns-modal-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(10,10,10,0.88);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.gns-modal-box {
+  position: relative;
+  width: min(480px, 92vw);
+  max-height: 92dvh;
+  overflow-y: auto;
+  background: #161616f0;
+  border: 1px solid var(--gold-border);
+  border-radius: 24px;
+  padding: 2.8rem 2rem 2rem;
+  transform: translateY(20px);
+  transition: transform 0.4s var(--ease-luxury);
+}
+.gns-modal.gns-visible .gns-modal-box {
+  transform: translateY(0);
+}
+
+/* Close button */
+.gns-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: none;
+  border: 1px solid var(--gold-border);
+  color: var(--grey);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.2s, border-color 0.2s;
+}
+.gns-close:hover { color: var(--cream); border-color: var(--gold); }
+
+/* ── Shared screen layout ── */
+.gns-screen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 1.1rem;
+  padding: 0.4rem 0;
+  animation: gnsSlideUp 0.38s var(--ease-luxury) both;
+}
+.gns-screen[hidden] { display: none !important; }
+
+/* Typography */
+.gns-eyebrow {
+  font-family: var(--font-sans);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin: 0;
+}
+.gns-title {
+  font-family: var(--font-serif);
+  font-size: clamp(2rem, 5vw, 2.8rem);
+  font-weight: 300;
+  color: var(--cream);
+  margin: 0;
+  line-height: 1.1;
+}
+.gns-title em {
+  color: var(--gold);
+  font-style: italic;
+}
+.gns-subtitle {
+  font-family: var(--font-sans);
+  font-size: 0.88rem;
+  color: var(--cream-dim);
+  line-height: 1.7;
+  margin: 0;
+}
+.gns-subtitle strong { color: var(--cream); }
+
+/* Intro icons */
+.gns-intro-icons {
+  font-size: 1.6rem;
+  letter-spacing: 0.5em;
+  margin: 0.2rem 0;
+}
+
+/* Buttons */
+.gns-btn-primary {
+  font-family: var(--font-sans);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--black);
+  background: var(--gold);
+  border: none;
+  border-radius: 999px;
+  padding: 0.85rem 2.2rem;
+  cursor: pointer;
+  transition: background 0.25s, transform 0.25s var(--ease-spring);
+  min-height: 48px;
+}
+.gns-btn-primary:hover {
+  background: var(--gold-light);
+  transform: translateY(-2px);
+}
+.gns-btn-ghost {
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--grey);
+  background: none;
+  border: 1px solid var(--gold-border);
+  border-radius: 999px;
+  padding: 0.7rem 1.8rem;
+  cursor: pointer;
+  transition: color 0.2s, border-color 0.2s;
+  min-height: 44px;
+}
+.gns-btn-ghost:hover { color: var(--cream); border-color: var(--gold); }
+
+/* ── Game screen ── */
+.gns-game-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 0.7rem;
+  width: 100%;
+}
+.gns-timer-label {
+  font-family: var(--font-sans);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--grey);
+}
+.gns-timer {
+  font-family: var(--font-serif);
+  font-size: 3rem;
+  font-weight: 600;
+  color: var(--gold);
+  line-height: 1;
+  min-width: 2.5ch;
+  text-align: center;
+  transition: color 0.3s;
+}
+.gns-timer--urgent {
+  color: #E74C3C !important;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .gns-timer--urgent {
+    animation: gnsTimerPulse 0.5s ease infinite;
+  }
+}
+
+/* ── Memory board ── */
+.gns-board {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: clamp(0.5rem, 2vw, 0.85rem);
+  width: 100%;
+}
+
+/* ── Memory card ── */
+.gns-card {
+  aspect-ratio: 1;
+  min-width: 64px;
+  min-height: 64px;
+  background: none;
+  border: 1px solid var(--gold-border);
+  border-radius: 12px;
+  cursor: pointer;
+  position: relative;
+  perspective: 600px;
+  -webkit-tap-highlight-color: transparent;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+.gns-card:hover:not(.gns-matched):not([disabled]) {
+  border-color: var(--gold);
+}
+.gns-card-face {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: clamp(1.6rem, 5vw, 2rem);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  transition: transform 0.42s var(--ease-luxury);
+}
+.gns-card-back  { background: rgba(212,175,55,0.07); transform: rotateY(0deg);    }
+.gns-card-front { background: rgba(212,175,55,0.13); transform: rotateY(180deg);  }
+
+.gns-card.gns-flipped .gns-card-back  { transform: rotateY(-180deg); }
+.gns-card.gns-flipped .gns-card-front { transform: rotateY(0deg);    }
+
+.gns-card.gns-matched {
+  border-color: var(--gold);
+  box-shadow: 0 0 14px rgba(212,175,55,0.40);
+  pointer-events: none;
+}
+
+/* Reduced motion: swap faces via opacity instead of 3D rotation */
+@media (prefers-reduced-motion: reduce) {
+  .gns-card-face        { transition: opacity 0.2s; }
+  .gns-card-back        { transform: none; }
+  .gns-card-front       { transform: none; opacity: 0; }
+  .gns-card.gns-flipped .gns-card-back  { opacity: 0; }
+  .gns-card.gns-flipped .gns-card-front { opacity: 1; }
+}
+
+/* ── Win screen ── */
+.gns-screen-win { position: relative; }
+.gns-confetti-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  border-radius: 24px;
+  z-index: 0;
+}
+.gns-win-inner {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+.gns-win-badge {
+  font-size: 3rem;
+  animation: gnsPop 0.5s var(--ease-spring) both;
+}
+.gns-win-amount {
+  font-family: var(--font-serif);
+  font-size: 2.4rem;
+  font-weight: 600;
+  color: #4ade80;
+  margin: 0;
+  line-height: 1;
+}
+.gns-voucher-pill {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.55rem 1.4rem;
+  border: 1px solid var(--gold-border);
+  border-radius: 999px;
+  background: rgba(212,175,55,0.07);
+}
+.gns-voucher-pill-label {
+  font-family: var(--font-sans);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--grey);
+}
+.gns-voucher-time {
+  font-family: var(--font-sans);
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--gold);
+  min-width: 4.2ch;
+  text-align: center;
+  transition: color 0.4s;
+}
+.gns-voucher-time.gns-urgent { color: #E74C3C; }
+@media (prefers-reduced-motion: no-preference) {
+  .gns-voucher-time.gns-urgent { animation: gnsTimerPulse 0.7s ease infinite; }
+}
+
+/* ── Lose screen ── */
+.gns-lose-icon { font-size: 3rem; }
+
+/* ── Expired overlay ── */
+.gns-expired-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1300;
+  background: rgba(10,10,10,0.88);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.gns-expired-overlay[hidden] { display: none; }
+.gns-expired-box {
+  background: #161616f0;
+  border: 1px solid var(--gold-border);
+  border-radius: 24px;
+  padding: 2.5rem 2rem;
+  width: min(400px, 90vw);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  text-align: center;
+  animation: gnsPop 0.4s var(--ease-spring) both;
+}
+.gns-expired-icon { font-size: 2.8rem; }
+
+/* ── Cart voucher discount block ── */
+.gns-cart-voucher-block {
+  width: 100%;
+  margin-top: 0.8rem;
+  padding-top: 0.8rem;
+  border-top: 1px solid rgba(212,175,55,0.18);
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+.gns-cart-discount-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.gns-cart-discount-label {
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #4ade80;
+}
+.gns-cart-discount-amount {
+  font-family: var(--font-serif);
+  font-size: 1rem;
+  font-weight: 600;
+  color: #4ade80;
+}
+.gns-cart-final-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-top: 0.4rem;
+}
+.gns-cart-countdown {
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--gold);
+  transition: color 0.4s;
+}
+.gns-cart-countdown.gns-urgent { color: #E74C3C; }
+@media (prefers-reduced-motion: no-preference) {
+  .gns-cart-countdown.gns-urgent { animation: gnsTimerPulse 0.7s ease infinite; }
+}
+
+/* ── Mobile adjustments ── */
+@media (max-width: 480px) {
+  /* WS FAB has no mobile override (stays at right: 2.2rem), so we match it exactly */
+  .gns-fab              { bottom: 7.5rem; right: 2.2rem; }
+  /* On mobile, cart FAB moves to bottom: 1.4rem — recalculate: 1.4 + 3.5rem + 1.6rem gap */
+  .gns-fab--above-cart  { bottom: 6.5rem; right: 1.4rem; } /* match cart FAB mobile position */
+  .gns-modal-box        { padding: 2.2rem 1.4rem 1.8rem; }
+  .gns-board            { gap: 0.45rem; }
+  .gns-card             { min-width: 56px; min-height: 56px; border-radius: 10px; }
+}

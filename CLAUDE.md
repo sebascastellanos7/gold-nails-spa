@@ -5,9 +5,10 @@ Multi-page luxury nail spa website. Pure vanilla HTML/CSS/JS — no build tools,
 
 ## File Structure
 - **`index.html`** (486 lines) — main landing page, Spanish (`lang="es"`)
-- **`services.html`** (1,161 lines) — full services catalog with shopping cart UI
-- **`styles.css`** (1,785 lines) — complete design system including cart styles
-- **`main.js`** (221 lines) — vanilla JS behaviors, no frameworks
+- **`services.html`** (1,298 lines) — full services catalog with shopping cart UI
+- **`styles.css`** (2,572 lines) — complete design system including cart + game styles
+- **`main.js`** (230 lines) — vanilla JS behaviors, no frameworks
+- **`game.js`** (572 lines) — "Juega y Gana" memory game + voucher system (see section below)
 - **`Servicios.json`** (227 lines) — service database (19 services with prices, durations, keywords)
 - **`logo.png`** / **`background.png`** — brand assets
 - 15 JPG images — gallery photos (timestamp filenames)
@@ -40,10 +41,64 @@ Multi-page luxury nail spa website. Pure vanilla HTML/CSS/JS — no build tools,
 7. **Booking** — 4 contact info cards + floating-label reservation form
 8. **Footer** — brand info, 4 social links, 3-column nav, legal text
 9. **WhatsApp FAB** — fixed button (green, bottom-right) with spring-animated tooltip
-10. **Toast** — success notification (slides in from bottom, `.show` class triggers)
+10. **Juega y Gana FAB** — gold pulsing star button above WhatsApp FAB, injected by `game.js`
+11. **Toast** — success notification (slides in from bottom, `.show` class triggers)
 
 ## services.html
 Separate page with all 19 services organized by category (Manos, Pies, Acrílicas, etc.). Each service card has `data-nombre`, `data-precio`, `data-duracion` attributes powering the cart. Includes embedded `<style>` block for page-specific overrides. Navbar has `.scrolled` class by default (no hero scroll trigger needed).
+
+## Juega y Gana — Game & Voucher System (game.js)
+
+Single IIFE loaded by both `index.html` and `services.html`. Must be loaded **before** the embedded cart `<script>` in `services.html` so `window.GNSVoucher` is available.
+
+### Public API: `window.GNSVoucher`
+| Property | Type | Description |
+|---|---|---|
+| `AMOUNT` | `5000` | Discount in COP |
+| `isValid()` | `→ boolean` | Checks `localStorage['gns_voucher_expiry']` against `Date.now()` |
+| `set()` | `→ void` | Writes expiry timestamp (now + 15 min), starts global countdown |
+| `clear()` | `→ void` | Removes key, stops interval, fires `gns:voucher-cleared` event |
+| `getExpiry()` | `→ number` | Raw ms timestamp from localStorage |
+| `formatCountdown(ms)` | `→ "MM:SS"` | Formats remaining ms as countdown string |
+
+### DOM Injected by game.js
+- `#gnsGameFab` — fixed FAB button (`.gns-fab`, `.gns-fab--above-cart` on services.html)
+- `#gnsModal` — full-screen game dialog with 4 screens: intro / game / win / lose
+- `#gnsExpiredModal` — alertdialog shown when voucher countdown hits 0:00
+
+### FAB Positioning
+- `index.html`: `.gns-fab` default — `bottom: 7.5rem; right: 2.2rem` (above WhatsApp)
+- `services.html`: `.gns-fab--above-cart` — `bottom: 11rem; right: 2.2rem` (above cart FAB)
+- Mobile `≤480px`: matches cart FAB shift — `bottom: 6.5rem; right: 1.4rem`
+
+### Game Flow
+1. User clicks FAB → modal opens (shows win screen if voucher already active)
+2. Intro → "Empezar" → 4×2 card board (8 cards, 4 pairs: 💅🌸✨🧴), 20s timer
+3. Win all 4 pairs → confetti + `setVoucher()` → 15-min countdown starts
+4. Timer ≤5s or countdown ≤5min → red pulse animation (FOMO)
+5. At 0:00 → "Bono Expirado" modal, `clearVoucher()` fires `gns:voucher-cleared`
+
+### Cart Integration (services.html)
+- `renderItems()` checks `window.GNSVoucher.isValid()` and branches totals HTML:
+  - **With voucher**: subtotal row + green "Bono Juega y Gana: −$5,000" row + final total + live countdown (`#cartVoucherCountdown`)
+  - **Without voucher**: original single-total layout
+- `handleConfirm()` re-validates at submit time; sends `total_price` (discounted) + `voucher` object to n8n webhook; calls `GNSVoucher.clear()` on success
+- Listens for `gns:voucher-claimed` and `gns:voucher-cleared` events → calls `renderItems()`
+
+### CSS Classes (styles.css, section `/* ═══ JUEGA Y GANA GAME ═══ */`)
+| Key class | Purpose |
+|---|---|
+| `.gns-fab` | Base FAB, pulsing gold ring animation |
+| `.gns-fab--above-cart` | Added on services.html; raises bottom to clear cart FAB |
+| `.gns-fab--active` | Applied while voucher is valid; changes pulse to glow |
+| `.gns-modal` + `.gns-visible` | Full-screen dialog; opacity transition on `.gns-visible` |
+| `.gns-card` + `.gns-flipped` + `.gns-matched` | 3D card flip via `rotateY`; reduced-motion uses opacity |
+| `.gns-timer--urgent` | Red pulse on game timer ≤5s |
+| `.gns-voucher-time.gns-urgent` | Red pulse on win-screen countdown ≤5min |
+| `.gns-cart-voucher-block` | Discount breakdown injected into `.cart-totals` |
+| `.gns-cart-countdown.gns-urgent` | Red pulse on cart countdown ≤5min |
+
+---
 
 ## Shopping Cart System (styles.css lines 1294–1786)
 Full e-commerce UI built in CSS/JS:
