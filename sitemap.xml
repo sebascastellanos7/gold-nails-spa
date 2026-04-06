@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+
+  <!-- Homepage -->
+  <url>
+    <loc>https://www.goldnailspa.com/</loc>
+    <lastmod>2026-04-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="es-CO" href="https://www.goldnailspa.com/" />
+    <image:image>
+      <image:loc>https://www.goldnailspa.com/background.png</image:loc>
+      <image:title>Gold Nail Spa Ibagué — Nail Spa en Tolima</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.goldnailspa.com/logo.png</image:loc>
+      <image:title>Logo Gold Nail Spa Ibagué</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.goldnailspa.com/1686542428584.jpg</image:loc>
+      <image:title>Diseño nail art Ibagué Tolima</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.goldnailspa.com/1686542428554.jpg</image:loc>
+      <image:title>Uñas semipermanente Ibagué</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.goldnailspa.com/1686542376404.jpg</image:loc>
+      <image:title>Uñas acrílicas Ibagué</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.goldnailspa.com/1686542428516.jpg</image:loc>
+      <image:title>Nail art dorado manicure Ibagué</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.goldnailspa.com/1686542376350.jpg</image:loc>
+      <image:title>Nail art floral spa de uñas Ibagué</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.goldnailspa.com/1686542376325.jpg</image:loc>
+      <image:title>Uñas espejo premium Ibagué Tolima</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.goldnailspa.com/1686542471269.jpg</image:loc>
+      <image:title>Uñas mármol acrílicas Ibagué</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.goldnailspa.com/1686542471221.jpg</image:loc>
+      <image:title>Pedicura ombré Ibagué Colombia</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.goldnailspa.com/1688924803812.jpg</image:loc>
+      <image:title>Ritual spa manicure pedicura Ibagué</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.goldnailspa.com/1688924803917.jpg</image:loc>
+      <image:title>Arte couture uñas Ibagué Colombia</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.goldnailspa.com/1705072266080.jpg</image:loc>
+      <image:title>Gold Nail Spa uñas premium Ibagué</image:title>
+    </image:image>
+  </url>
+
+  <!-- Services page -->
+  <url>
+    <loc>https://www.goldnailspa.com/services.html</loc>
+    <lastmod>2026-04-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="es-CO" href="https://www.goldnailspa.com/services.html" />
+  </url>
+
+</urlset>

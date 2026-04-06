@@ -1,0 +1,25 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://www.goldnailspa.com/sitemap.xml
+
+# AI crawler access for LLMs and AI search (ChatGPT, Perplexity, Google AI)
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Googlebot
+Allow: /
+
+# Block sensitive paths if they ever exist
+Disallow: /admin/
+Disallow: /cgi-bin/
