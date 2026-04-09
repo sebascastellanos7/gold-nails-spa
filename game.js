@@ -11,7 +11,7 @@
      CONSTANTS
   ───────────────────────────────────────────── */
   var VOUCHER_KEY      = 'gns_voucher_expiry';
-  var VOUCHER_AMOUNT   = 5000;
+  var VOUCHER_AMOUNT   = 3000;
   var VOUCHER_DURATION = 15 * 60 * 1000;   // 15 min ms
   var TIMER_SECONDS    = 20;
   var SYMBOLS          = ['💅','💅','🌸','🌸','✨','✨','🧴','🧴','❤️','❤️'];
@@ -134,8 +134,9 @@
               '<div class="gns-win-badge" aria-hidden="true">🏆</div>',
               '<p class="gns-eyebrow">¡Felicitaciones!</p>',
               '<h2 class="gns-title">¡Ganaste!</h2>',
-              '<p class="gns-win-amount">− $5,000 COP</p>',
+              '<p class="gns-win-amount">− $3,000 COP</p>',
               '<p class="gns-subtitle">Tu bono es válido por <strong>15 minutos</strong>.<br>Úsalo al confirmar tu reserva.</p>',
+              '<p class="gns-terms">* No acumulable con otras ofertas o promociones.</p>',
               '<div class="gns-voucher-pill" id="gnsVoucherPill">',
                 '<span class="gns-voucher-pill-label">Expira en</span>',
                 '<span class="gns-voucher-time" id="gnsVoucherTimeWin">15:00</span>',
