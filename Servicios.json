@@ -8,9 +8,9 @@
           "uñas normales",
           "esmaltado clásico"
         ],
-        "duracion": 45,
+        "duracion": 50,
         "Descripción": "Limpieza profunda, exfoliación y esmaltado tradicional. Va incluida una uña con sticker; si desea un diseño a mano el precio varía entre 500 a 2k.",
-        "precio": 20000
+        "precio": 24000
       },
       {
         "nombre": "Pies Tradicionales",
@@ -21,7 +21,7 @@
         ],
         "duracion": 60,
         "Descripción": "Limpieza profunda, exfoliación, máquina masajeadora térmica con duración de 5 minutos y esmaltado tradicional. Va incluida una uña con sticker; si desea un diseño a mano el precio varía entre 500 a 2k.",
-        "precio": 23000
+        "precio": 29000
       },
       {
         "nombre": "Limpieza",
@@ -32,7 +32,7 @@
         ],
         "duracion": 30,
         "Descripción": "Limpieza profunda y exfoliación.",
-        "precio": 15000
+        "precio": 19000
       },
       {
         "nombre": "Cambio de Esmalte",
@@ -43,7 +43,7 @@
         ],
         "duracion": 20,
         "Descripción": "Cambio de esmalte tradicional.",
-        "precio": 10000
+        "precio": 13000
       },
       {
         "nombre": "Manos Semipermanente - Mujeres",
@@ -55,7 +55,7 @@
         ],
         "duracion": 60,
         "Descripción": "Limpieza profunda en seco con exfoliación y esmaltado en gel. Va incluida una uña decorada o un diseño sencillo, y adicional se incluye el retiro del diseño que se realice aquí en el spa.",
-        "precio": 48000
+        "precio": 52000
       },
       {
         "nombre": "Manos semipermanente con base rubber",
@@ -66,7 +66,7 @@
         ],
         "duracion": 80,
         "Descripción": "La base rubber es usada para nivelar la uña y aportar dureza a las uñas frágiles. Se realiza mediante una limpieza profunda en seco con exfoliación y esmaltado en gel. Va incluida una uña decorada o un diseño sencillo.",
-        "precio": 58000
+        "precio": 60000
       },
       {
         "nombre": "Pies semipermanente - Mujeres",
@@ -78,7 +78,7 @@
         ],
         "duracion": 60,
         "Descripción": "Limpieza profunda en seco con exfoliación y esmaltado en gel. Va incluida una uña decorada o un diseño sencillo, y adicional se incluye el retiro del diseño que se realice aquí.",
-        "precio": 42000
+        "precio": 50000
       },
       {
         "nombre": "Manos semipermanente - Hombres",
@@ -89,7 +89,7 @@
         ],
         "duracion": 50,
         "Descripción": "Limpieza profunda en seco con exfoliación y esmaltado en gel. Adicional se incluye el retiro si se lo realizaron aquí en Gold Nails Spa.",
-        "precio": 40000
+        "precio": 45000
       },
       {
         "nombre": "Pies semipermanente - Hombres",
@@ -100,7 +100,7 @@
         ],
         "duracion": 60,
         "Descripción": "Limpieza profunda en seco con exfoliación y esmaltado en gel, máquina masajeadora térmica con duración de 5 minutos. Adicional se incluye el retiro si se lo realizaron en Gold Nails Spa.",
-        "precio": 43000
+        "precio": 48000
       },
       {
         "nombre": "Baño en acrílico",
@@ -111,7 +111,7 @@
         ],
         "duracion": 90,
         "Descripción": "Limpieza en seco, recubrimiento de uña natural con acrílico y esmaltado semipermanente.",
-        "precio": 85000
+        "precio": 95000
       },
       {
         "nombre": "Retoque de baño en acrílicas",
@@ -122,7 +122,7 @@
         ],
         "duracion": 90,
         "Descripción": "Retiro del esmaltado semipermanente, limpieza profunda en seco y retoque del baño con esmaltado semipermanente.",
-        "precio": 70000
+        "precio": 75000
       },
       {
         "nombre": "Uñas acrílicas con tip",
@@ -144,7 +144,7 @@
         ],
         "duracion": 150,
         "Descripción": "Limpieza en seco, uñas acrílicas esculpidas hasta largor número 3 con esmaltado semipermanente.",
-        "precio": 125000
+        "precio": 130000
       },
       {
         "nombre": "Retoque de acrílicas esculpidas",
@@ -155,7 +155,7 @@
         ],
         "duracion": 120,
         "Descripción": "Retiro del esmaltado semipermanente, limpieza profunda en seco y retoque del acrílico con esmaltado semipermanente.",
-        "precio": 85000
+        "precio": 95000
       },
       {
         "nombre": "Técnica Dipping",
@@ -166,7 +166,7 @@
         ],
         "duracion": 60,
         "Descripción": "Limpieza en seco. La técnica de dipping implica aplicar capas de polvo acrílico en tus uñas para que se vuelvan más fuertes y duren mucho tiempo, culminando con esmaltado semipermanente.",
-        "precio": 60000
+        "precio": 66000
       },
       {
         "nombre": "Soft gel - Press On",
@@ -177,7 +177,7 @@
         ],
         "duracion": 90,
         "Descripción": "Las press on son un sistema moderno para alargar tus uñas de forma más rápida y con un acabado más natural. Se realiza la limpieza en seco, exfoliación y se culmina con esmaltado semipermanente.",
-        "precio": 85000
+        "precio": 90000
       },
       {
         "nombre": "Retoque Press On",
@@ -188,7 +188,7 @@
         ],
         "duracion": 70,
         "Descripción": "Se retira el esmaltado semipermanente, se hace limpieza en seco, se nivela el área de crecimiento con base rubber y se culmina con esmaltado semipermanente.",
-        "precio": 70000
+        "precio": 75000
       },
       {
         "nombre": "Punto de acrílico",
