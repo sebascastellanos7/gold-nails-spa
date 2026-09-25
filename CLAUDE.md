@@ -1,15 +1,16 @@
 # Gold Nails Spa — Project Guide
 
 ## Overview
-Multi-page luxury nail spa website. Pure vanilla HTML/CSS/JS — no build tools, no npm, no dependencies. Open `index.html` directly in a browser.
+Multi-page luxury nail spa website. Pure vanilla HTML/CSS/JS — no build tools, no npm, no dependencies. Open `index.html` directly in a browser — except for testing price sync (see `services-sync.js` below), which needs a local server since `fetch()` is blocked on `file://`, e.g. `python -m http.server` from the project root, then visit `http://localhost:8000/`.
 
 ## File Structure
-- **`index.html`** (486 lines) — main landing page, Spanish (`lang="es"`)
-- **`services.html`** (1,298 lines) — full services catalog with shopping cart UI
-- **`styles.css`** (2,572 lines) — complete design system including cart + game styles
+- **`index.html`** (640 lines) — main landing page, Spanish (`lang="es"`)
+- **`services.html`** (1,365 lines) — full services catalog with shopping cart UI
+- **`styles.css`** (2,584 lines) — complete design system including cart + game styles
 - **`main.js`** (230 lines) — vanilla JS behaviors, no frameworks
-- **`game.js`** (572 lines) — "Juega y Gana" memory game + voucher system (see section below)
-- **`Servicios.json`** (227 lines) — service database (19 services with prices, durations, keywords)
+- **`game.js`** (688 lines) — "Juega y Gana" memory game + voucher system (see section below)
+- **`services-sync.js`** (101 lines) — fetches `Servicios.json` at page load and pushes prices/durations into the DOM (see "Servicios.json as Single Source of Truth" below)
+- **`Servicios.json`** (227 lines) — service database (20 services with prices, durations, keywords) — **the only place to edit a price or duration**
 - **`logo.png`** / **`background.png`** — brand assets
 - 15 JPG images — gallery photos (timestamp filenames)
 
@@ -129,7 +130,20 @@ Full e-commerce UI built in CSS/JS:
 ```json
 { "nombre": "...", "claves": ["kw1","kw2","kw3"], "duracion": 45, "Descripción": "...", "precio": 20000 }
 ```
-19 services from 10,000 COP (Cambio de Esmalte) to 125,000 COP (Acrílicas esculpidas con molde). Keywords (`claves`) suggest chatbot/search integration.
+20 services from 2,000 COP (Punto de Acrílico) to 130,000 COP (Acrílicas esculpidas con molde). Keywords (`claves`) suggest chatbot/search integration.
+
+## Servicios.json as Single Source of Truth (services-sync.js)
+
+Every price/duration shown anywhere in the project is driven from `Servicios.json`. **To change a price or duration, edit `Servicios.json` only** — `services-sync.js` (loaded before `game.js` on both pages) fetches it on page load and overwrites the price/duration text and `data-precio`/`data-duracion` attributes of any element carrying a `data-servicio-key="<nombre exacto>"` attribute, where `<nombre exacto>` must match a `nombre` field in `Servicios.json` exactly (case and dashes included).
+
+Elements wired to sync:
+- **`services.html`** — every `.service-all-card` (`data-servicio-key` alongside the existing display-only `data-nombre`); updates `data-precio`, `data-duracion`, the `.sac-price` text, and the `.sac-duration` minutes text. The cart reads `data-precio`/`data-duracion` from the DOM at add-to-cart click time, so this sync always runs before a user can add a stale price.
+- **`index.html`** — the 6 `.service-card` preview articles (`data-servicio-key`) and the `#ldJsonOffers` LocalBusiness JSON-LD `<script>` block (5 offers, matched by position via the `OFFER_CATALOG_ORDER` array in `services-sync.js` since the schema uses SEO-friendly names, not catalog names).
+
+**Adding a new service to the HTML?** Add `data-servicio-key="<exact nombre from Servicios.json>"` to the card/article — the static price/duration already in the markup is just a fallback in case `fetch()` fails (e.g. opened via `file://`, or offline), so keep it reasonably close to reality, but the sync script is what keeps it correct in practice.
+
+**Not synced (static, must be updated by hand if you rename/reprice these specific items):**
+- `llms.txt` — plain text read by AI crawlers, not rendered JS, so it can't fetch `Servicios.json`. It carries a short illustrative price list plus a pointer to `Servicios.json` for the full current catalog.
 
 ## Responsive Breakpoints
 - **1100px** — 2-col grids (services, testimonials), masonry 3-col

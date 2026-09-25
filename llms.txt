@@ -14,18 +14,19 @@ Gold Nail Spa is a premium nail salon and beauty spa located in Ibagué, Tolima,
 Monday to Saturday: 9:00 AM – 6:00 PM
 
 ## Services Offered (Prices in COP)
-- Manicura Tradicional — from $20,000 COP
-- Manicura Tradicional Hombres — from $20,000 COP
-- Pies Tradicionales Mujeres — from $32,000 COP
-- Manos Semipermanente Mujeres — from $48,000 COP
-- Manos Semipermanente Hombres — from $40,000 COP
-- Pies Semipermanente Mujeres — from $42,000 COP
-- Técnica Dipping — from $75,000 COP
-- Soft Gel / Press On — from $85,000 COP
-- Retoque Press On — from $70,000 COP
-- Acrílicas Esculpidas con Molde — from $125,000 COP
+- Manicura Tradicional — from $24,000 COP
+- Pies Tradicionales — from $29,000 COP
+- Manos Semipermanente Mujeres — from $52,000 COP
+- Manos Semipermanente Hombres — from $45,000 COP
+- Pies Semipermanente Mujeres — from $50,000 COP
+- Técnica Dipping — from $66,000 COP
+- Soft Gel / Press On — from $90,000 COP
+- Retoque Press On — from $75,000 COP
+- Acrílicas Esculpidas con Molde — from $130,000 COP
 - Nail Art (various designs) — prices vary
-- Retiro de Acrílicas / Gel — from $10,000 COP
+- Retiro de Acrílico u Otro Sistema — from $20,000 COP
+
+Full, always-current catalog (name, price, duration): https://www.goldnailspa.com/Servicios.json
 
 ## Why Choose Gold Nail Spa in Ibagué?
 - 100% toxic-free products — no TPO, no DMPT
